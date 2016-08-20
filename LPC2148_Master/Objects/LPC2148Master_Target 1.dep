@@ -1,0 +1,58 @@
+Dependencies for Project 'LPC2148Master', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x55AF141C)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--pd "__UVISION_VERSION SETA 518"--list .\listings\startup.lst --xref -o .\objects\startup.o --depend .\objects\startup.d)
+F (.\delay.c)(0x57A8A43F)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="518"-o .\objects\delay.o --omf_browse .\objects\delay.crf --depend .\objects\delay.d)
+I (delay.h)(0x57A8A3BD)
+F (.\gpio.c)(0x57A8B830)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="518"-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC214X.H)(0x55AF142E)
+I (gpio.h)(0x57A89DEE)
+F (.\lcd.c)(0x57A8BEA7)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="518"-o .\objects\lcd.o --omf_browse .\objects\lcd.crf --depend .\objects\lcd.d)
+I (gpio.h)(0x57A89DEE)
+I (delay.h)(0x57A8A3BD)
+I (lcd.h)(0x57A8BEA7)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569E0D62)
+F (.\Nstring.c)(0x5783B447)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="518"-o .\objects\nstring.o --omf_browse .\objects\nstring.crf --depend .\objects\nstring.d)
+I (Nstring.h)(0x57A8C430)
+F (.\serial.c)(0x57AA1080)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="518"-o .\objects\serial.o --omf_browse .\objects\serial.crf --depend .\objects\serial.d)
+I (LPC214x.h)(0x440F4CB8)
+I (system.h)(0x57AF2EC2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569E0D62)
+I (target.h)(0x55CEAE46)
+I (irq.h)(0x57A8CAE2)
+I (serial.h)(0x57AA0D93)
+I (Nstring.h)(0x57A8C430)
+I (delay.h)(0x57A8A3BD)
+F (.\irq.c)(0x57A8CD96)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="518"-o .\objects\irq.o --omf_browse .\objects\irq.crf --depend .\objects\irq.d)
+I (LPC214x.h)(0x440F4CB8)
+I (system.h)(0x57AF2EC2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569E0D62)
+I (irq.h)(0x57A8CAE2)
+F (.\adc.c)(0x57B0420E)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="518"-o .\objects\adc.o --omf_browse .\objects\adc.crf --depend .\objects\adc.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC214X.H)(0x55AF142E)
+I (system.h)(0x57AF2EC2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569E0D62)
+I (adc.h)(0x57AF2ECE)
+F (.\gsm.c)(0x57B759FF)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="518"-o .\objects\gsm.o --omf_browse .\objects\gsm.crf --depend .\objects\gsm.d)
+I (system.h)(0x57AF2EC2)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569E0D62)
+I (delay.h)(0x57A8A3BD)
+I (gsm.h)(0x57B04485)
+I (serial.h)(0x57AA0D93)
+I (lcd.h)(0x57A8BEA7)
+I (Nstring.h)(0x57A8C430)
+F (.\main.c)(0x57B04952)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="518"-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC214X.H)(0x55AF142E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569E0D62)
+I (demo.h)(0x57AA11C0)
+I (serial.h)(0x57AA0D93)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569E0D62)
+I (adc.h)(0x57AF2ECE)
+I (delay.h)(0x57A8A3BD)
+I (gsm.h)(0x57B04485)
+F (.\demo.c)(0x57B04583)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="518"-o .\objects\demo.o --omf_browse .\objects\demo.crf --depend .\objects\demo.d)
+I (delay.h)(0x57A8A3BD)
+I (gpio.h)(0x57A89DEE)
+I (lcd.h)(0x57A8BEA7)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x569E0D62)
+I (serial.h)(0x57AA0D93)
+I (adc.h)(0x57AF2ECE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x569E0D62)

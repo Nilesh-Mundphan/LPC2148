@@ -1,0 +1,9 @@
+.\objects\serial.o: serial.c
+.\objects\serial.o: LPC214x.h
+.\objects\serial.o: system.h
+.\objects\serial.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\serial.o: target.h
+.\objects\serial.o: irq.h
+.\objects\serial.o: serial.h
+.\objects\serial.o: Nstring.h
+.\objects\serial.o: delay.h
