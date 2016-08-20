@@ -1,2 +1,2 @@
-.\objects\delay.o: delay.c
-.\objects\delay.o: delay.h
+.\objects\delay.o: lib\delay\delay.c
+.\objects\delay.o: lib\delay\delay.h

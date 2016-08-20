@@ -1,2 +1,2 @@
-.\objects\nstring.o: Nstring.c
-.\objects\nstring.o: Nstring.h
+.\objects\nstring.o: lib\nstring\Nstring.c
+.\objects\nstring.o: lib\nstring\Nstring.h

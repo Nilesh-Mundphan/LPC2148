@@ -1,3 +1,3 @@
-.\objects\gpio.o: gpio.c
-.\objects\gpio.o: C:\Keil_v5\ARM\Inc\Philips\LPC214X.H
-.\objects\gpio.o: gpio.h
+.\objects\gpio.o: lib\gpio\gpio.c
+.\objects\gpio.o: .\lib\system\LPC214X.H
+.\objects\gpio.o: lib\gpio\gpio.h

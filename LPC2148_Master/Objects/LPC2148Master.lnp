@@ -1,15 +1,15 @@
 --cpu ARM7TDMI
 ".\objects\startup.o"
+".\objects\adc.o"
 ".\objects\delay.o"
 ".\objects\gpio.o"
-".\objects\lcd.o"
+".\objects\irq.o"
 ".\objects\nstring.o"
 ".\objects\serial.o"
-".\objects\irq.o"
-".\objects\adc.o"
-".\objects\gsm.o"
 ".\objects\main.o"
 ".\objects\demo.o"
+".\objects\gsm.o"
+".\objects\lcd.o"
 --strict --scatter ".\Objects\LPC2148Master.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
