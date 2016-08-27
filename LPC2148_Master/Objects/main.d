@@ -7,3 +7,5 @@
 .\objects\main.o: .\lib\adc\adc.h
 .\objects\main.o: .\lib\delay\delay.h
 .\objects\main.o: .\modules\gsm\gsm.h
+.\objects\main.o: .\modules\dht11\dht11.h
+.\objects\main.o: .\lib\gpio\gpio.h

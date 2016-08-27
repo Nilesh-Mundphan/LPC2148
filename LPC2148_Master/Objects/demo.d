@@ -5,4 +5,5 @@
 .\objects\demo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\demo.o: .\lib\serial\serial.h
 .\objects\demo.o: .\lib\adc\adc.h
+.\objects\demo.o: .\modules\gsm\gsm.h
 .\objects\demo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

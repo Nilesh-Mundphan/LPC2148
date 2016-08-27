@@ -135,7 +135,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2ARM.DLL</Flash2>
-          <Flash3>"E:\Done !\Controller\LPC2148\ARM-Keil\LPC2148Master\load_hex.bat" ()</Flash3>
+          <Flash3>"E:\Sync Work\LPC2148\LPC2148_Master\load_hex.bat" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -330,7 +330,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>.\lib\adc;.\lib\delay;.\lib\gpio;.\lib\irq;.\lib\nstring;.\lib\serial;.\lib\system;.\modules\gsm;.\modules\lcd;.\modules\dht11</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -384,44 +384,34 @@
           <GroupName>lib</GroupName>
           <Files>
             <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\adc\adc.c</FilePath>
+            </File>
+            <File>
               <FileName>delay.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\delay.c</FilePath>
+              <FilePath>.\lib\delay\delay.c</FilePath>
             </File>
             <File>
               <FileName>gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\lcd.c</FilePath>
-            </File>
-            <File>
-              <FileName>Nstring.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Nstring.c</FilePath>
-            </File>
-            <File>
-              <FileName>serial.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\serial.c</FilePath>
+              <FilePath>.\lib\gpio\gpio.c</FilePath>
             </File>
             <File>
               <FileName>irq.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\irq.c</FilePath>
+              <FilePath>.\lib\irq\irq.c</FilePath>
             </File>
             <File>
-              <FileName>adc.c</FileName>
+              <FileName>Nstring.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\adc.c</FilePath>
+              <FilePath>.\lib\nstring\Nstring.c</FilePath>
             </File>
             <File>
-              <FileName>gsm.c</FileName>
+              <FileName>serial.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\gsm.c</FilePath>
+              <FilePath>.\lib\serial\serial.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -437,6 +427,26 @@
               <FileName>demo.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\demo.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>modules</GroupName>
+          <Files>
+            <File>
+              <FileName>gsm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\modules\gsm\gsm.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\modules\lcd\lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>dht11.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\modules\dht11\dht11.c</FilePath>
             </File>
           </Files>
         </Group>
