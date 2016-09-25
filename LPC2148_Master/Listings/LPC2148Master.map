@@ -65,9 +65,8 @@ Section Cross References
     i2c.o(i.i2c_write) refers to i2c.o(i.i2c_wait_status) for i2c_wait_status
     i2c.o(i.i2c_write_buffer) refers to i2c.o(i.i2c_start) for i2c_start
     i2c.o(i.i2c_write_buffer) refers to i2c.o(i.i2c_write) for i2c_write
-    i2c.o(i.i2c_write_buffer) refers to serial.o(i.serial0_print) for serial0_print
     i2c.o(i.i2c_write_buffer) refers to i2c.o(i.i2c_stop) for i2c_stop
-    main.o(i.main) refers to demo.o(i.i2c_eeprom_test) for i2c_eeprom_test
+    main.o(i.main) refers to demo.o(i.i2c_rtc_test) for i2c_rtc_test
     demo.o(i.adc_test) refers to _printf_pad.o(.text) for _printf_pre_padding
     demo.o(i.adc_test) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
     demo.o(i.adc_test) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
@@ -78,6 +77,9 @@ Section Cross References
     demo.o(i.adc_test) refers to noretval__2sprintf.o(.text) for __2sprintf
     demo.o(i.adc_test) refers to serial.o(i.serial0_print) for serial0_print
     demo.o(i.adc_test) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.get_time_date) refers to i2c.o(i.i2c_read_buffer) for i2c_read_buffer
+    demo.o(i.get_time_date) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.get_time_date) refers to demo.o(i.hex_to_str) for hex_to_str
     demo.o(i.gpio_test) refers to gpio.o(i.gpio_pin_mode) for gpio_pin_mode
     demo.o(i.gpio_test) refers to gpio.o(i.gpio_pin_write) for gpio_pin_write
     demo.o(i.gpio_test) refers to delay.o(i.delay_ms) for delay_ms
@@ -107,6 +109,11 @@ Section Cross References
     demo.o(i.i2c_eeprom_test) refers to i2c.o(i.i2c_read_buffer) for i2c_read_buffer
     demo.o(i.i2c_eeprom_test) refers to delay.o(i.delay_ms) for delay_ms
     demo.o(i.i2c_eeprom_test) refers to demo.o(.constdata) for .constdata
+    demo.o(i.i2c_rtc_test) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.i2c_rtc_test) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.i2c_rtc_test) refers to i2c.o(i.i2c_init) for i2c_init
+    demo.o(i.i2c_rtc_test) refers to demo.o(i.get_time_date) for get_time_date
+    demo.o(i.i2c_rtc_test) refers to delay.o(i.delay_ms) for delay_ms
     demo.o(i.lcd_test) refers to lcd.o(i.lcd_init) for lcd_init
     demo.o(i.lcd_test) refers to lcd.o(i.lcd_clear) for lcd_clear
     demo.o(i.lcd_test) refers to lcd.o(i.lcd_print_xy) for lcd_print_xy
@@ -115,6 +122,7 @@ Section Cross References
     demo.o(i.serial_test) refers to serial.o(i.serial0_available) for serial0_available
     demo.o(i.serial_test) refers to serial.o(i.serial0_read) for serial0_read
     demo.o(i.serial_test) refers to serial.o(i.serial0_write) for serial0_write
+    demo.o(i.set_time_date) refers to i2c.o(i.i2c_write_buffer) for i2c_write_buffer
     gsm.o(i.debug) refers to serial.o(i.serial0_print) for serial0_print
     gsm.o(i.debug) refers to delay.o(i.delay_ms) for delay_ms
     gsm.o(i.dht11_test) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
@@ -390,12 +398,16 @@ Removing Unused input sections from the image.
     Removing serial.o(i.serial1_read), (152 bytes).
     Removing serial.o(i.serial1_responce), (100 bytes).
     Removing serial.o(i.serial1_write), (64 bytes).
+    Removing i2c.o(i.i2c_write_buffer), (100 bytes).
     Removing demo.o(i.adc_test), (200 bytes).
     Removing demo.o(i.gpio_test), (60 bytes).
     Removing demo.o(i.gsm_test), (240 bytes).
     Removing demo.o(i.hcsr04_test), (144 bytes).
+    Removing demo.o(i.i2c_eeprom_test), (192 bytes).
     Removing demo.o(i.lcd_test), (116 bytes).
     Removing demo.o(i.serial_test), (60 bytes).
+    Removing demo.o(i.set_time_date), (32 bytes).
+    Removing demo.o(.constdata), (8 bytes).
     Removing gsm.o(i.debug), (44 bytes).
     Removing gsm.o(i.dht11_test), (220 bytes).
     Removing gsm.o(i.gsm_cmd), (60 bytes).
@@ -420,7 +432,7 @@ Removing Unused input sections from the image.
     Removing hcsr04.o(i.HCSR04_trigger), (44 bytes).
     Removing hcsr04.o(i.get_pulse_width), (200 bytes).
 
-65 unused section(s) (total 7725 bytes) removed from the image.
+69 unused section(s) (total 8057 bytes) removed from the image.
 
 ==============================================================================
 
@@ -613,23 +625,23 @@ Image Symbol Table
     .text_udiv                               0x0000072c   Section       36  aeabi_sdiv.o(.text_udiv)
     i.Serial0Handler                         0x00000750   Section        0  serial.o(i.Serial0Handler)
     i.delay_ms                               0x00000834   Section        0  delay.o(i.delay_ms)
-    i.i2c_eeprom_test                        0x00000868   Section        0  demo.o(i.i2c_eeprom_test)
-    i.i2c_init                               0x00000928   Section        0  i2c.o(i.i2c_init)
-    i.i2c_read                               0x00000978   Section        0  i2c.o(i.i2c_read)
-    i.i2c_read_buffer                        0x000009e4   Section        0  i2c.o(i.i2c_read_buffer)
-    i.i2c_restart                            0x00000a48   Section        0  i2c.o(i.i2c_restart)
-    i.i2c_start                              0x00000a74   Section        0  i2c.o(i.i2c_start)
-    i.i2c_stop                               0x00000aac   Section        0  i2c.o(i.i2c_stop)
-    i.i2c_wait_status                        0x00000ac8   Section        0  i2c.o(i.i2c_wait_status)
-    i.i2c_write                              0x00000b28   Section        0  i2c.o(i.i2c_write)
-    i.i2c_write_buffer                       0x00000b70   Section        0  i2c.o(i.i2c_write_buffer)
-    i.install_irq                            0x00000be4   Section        0  irq.o(i.install_irq)
-    i.main                                   0x00000c74   Section        0  main.o(i.main)
-    i.serial0_buff                           0x00000c88   Section        0  serial.o(i.serial0_buff)
-    i.serial0_init                           0x00000d68   Section        0  serial.o(i.serial0_init)
-    i.serial0_print                          0x00000e34   Section        0  serial.o(i.serial0_print)
-    i.serial0_write                          0x00000e5c   Section        0  serial.o(i.serial0_write)
-    .constdata                               0x00000e9c   Section        8  demo.o(.constdata)
+    i.get_time_date                          0x00000868   Section        0  demo.o(i.get_time_date)
+    i.hex_to_str                             0x000009c0   Section        0  demo.o(i.hex_to_str)
+    i.i2c_init                               0x000009e0   Section        0  i2c.o(i.i2c_init)
+    i.i2c_read                               0x00000a30   Section        0  i2c.o(i.i2c_read)
+    i.i2c_read_buffer                        0x00000a9c   Section        0  i2c.o(i.i2c_read_buffer)
+    i.i2c_restart                            0x00000b00   Section        0  i2c.o(i.i2c_restart)
+    i.i2c_rtc_test                           0x00000b2c   Section        0  demo.o(i.i2c_rtc_test)
+    i.i2c_start                              0x00000b88   Section        0  i2c.o(i.i2c_start)
+    i.i2c_stop                               0x00000bc0   Section        0  i2c.o(i.i2c_stop)
+    i.i2c_wait_status                        0x00000bdc   Section        0  i2c.o(i.i2c_wait_status)
+    i.i2c_write                              0x00000c3c   Section        0  i2c.o(i.i2c_write)
+    i.install_irq                            0x00000c84   Section        0  irq.o(i.install_irq)
+    i.main                                   0x00000d14   Section        0  main.o(i.main)
+    i.serial0_buff                           0x00000d28   Section        0  serial.o(i.serial0_buff)
+    i.serial0_init                           0x00000e08   Section        0  serial.o(i.serial0_init)
+    i.serial0_print                          0x00000ed4   Section        0  serial.o(i.serial0_print)
+    i.serial0_write                          0x00000efc   Section        0  serial.o(i.serial0_write)
     .data                                    0x40000000   Section       18  serial.o(.data)
     .bss                                     0x40000014   Section     1024  serial.o(.bss)
     .bss                                     0x40000414   Section       96  libspace.o(.bss)
@@ -753,24 +765,25 @@ Image Symbol Table
     __semihosting_library_function           0x0000072c   ARM Code       0  indicate_semi.o(.text)
     Serial0Handler                           0x00000750   ARM Code     220  serial.o(i.Serial0Handler)
     delay_ms                                 0x00000834   ARM Code      48  delay.o(i.delay_ms)
-    i2c_eeprom_test                          0x00000868   ARM Code     128  demo.o(i.i2c_eeprom_test)
-    i2c_init                                 0x00000928   ARM Code      76  i2c.o(i.i2c_init)
-    i2c_read                                 0x00000978   ARM Code     104  i2c.o(i.i2c_read)
-    i2c_read_buffer                          0x000009e4   ARM Code     100  i2c.o(i.i2c_read_buffer)
-    i2c_restart                              0x00000a48   ARM Code      40  i2c.o(i.i2c_restart)
-    i2c_start                                0x00000a74   ARM Code      52  i2c.o(i.i2c_start)
-    i2c_stop                                 0x00000aac   ARM Code      24  i2c.o(i.i2c_stop)
-    i2c_wait_status                          0x00000ac8   ARM Code      92  i2c.o(i.i2c_wait_status)
-    i2c_write                                0x00000b28   ARM Code      68  i2c.o(i.i2c_write)
-    i2c_write_buffer                         0x00000b70   ARM Code     108  i2c.o(i.i2c_write_buffer)
-    install_irq                              0x00000be4   ARM Code     140  irq.o(i.install_irq)
-    main                                     0x00000c74   ARM Code      20  main.o(i.main)
-    serial0_buff                             0x00000c88   ARM Code     208  serial.o(i.serial0_buff)
-    serial0_init                             0x00000d68   ARM Code     188  serial.o(i.serial0_init)
-    serial0_print                            0x00000e34   ARM Code      40  serial.o(i.serial0_print)
-    serial0_write                            0x00000e5c   ARM Code      60  serial.o(i.serial0_write)
-    Region$$Table$$Base                      0x00000ea4   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00000ec4   Number         0  anon$$obj.o(Region$$Table)
+    get_time_date                            0x00000868   ARM Code     320  demo.o(i.get_time_date)
+    hex_to_str                               0x000009c0   ARM Code      32  demo.o(i.hex_to_str)
+    i2c_init                                 0x000009e0   ARM Code      76  i2c.o(i.i2c_init)
+    i2c_read                                 0x00000a30   ARM Code     104  i2c.o(i.i2c_read)
+    i2c_read_buffer                          0x00000a9c   ARM Code     100  i2c.o(i.i2c_read_buffer)
+    i2c_restart                              0x00000b00   ARM Code      40  i2c.o(i.i2c_restart)
+    i2c_rtc_test                             0x00000b2c   ARM Code      68  demo.o(i.i2c_rtc_test)
+    i2c_start                                0x00000b88   ARM Code      52  i2c.o(i.i2c_start)
+    i2c_stop                                 0x00000bc0   ARM Code      24  i2c.o(i.i2c_stop)
+    i2c_wait_status                          0x00000bdc   ARM Code      92  i2c.o(i.i2c_wait_status)
+    i2c_write                                0x00000c3c   ARM Code      68  i2c.o(i.i2c_write)
+    install_irq                              0x00000c84   ARM Code     140  irq.o(i.install_irq)
+    main                                     0x00000d14   ARM Code      20  main.o(i.main)
+    serial0_buff                             0x00000d28   ARM Code     208  serial.o(i.serial0_buff)
+    serial0_init                             0x00000e08   ARM Code     188  serial.o(i.serial0_init)
+    serial0_print                            0x00000ed4   ARM Code      40  serial.o(i.serial0_print)
+    serial0_write                            0x00000efc   ARM Code      60  serial.o(i.serial0_write)
+    Region$$Table$$Base                      0x00000f3c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00000f5c   Number         0  anon$$obj.o(Region$$Table)
     rx_Buffer0_Head                          0x40000000   Data           4  serial.o(.data)
     rx_Buffer0_Tail                          0x40000004   Data           4  serial.o(.data)
     rx_Buffer1_Head                          0x40000008   Data           4  serial.o(.data)
@@ -790,96 +803,96 @@ Memory Map of the image
 
   Image Entry point : 0x00000110
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00000ed8, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00000f70, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00000ec4, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00000f5c, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x00000110   Code   RO            3    RESET               startup.o
-    0x00000110   0x00000008   Code   RO          738  * !!!main             c_t.l(__main.o)
-    0x00000118   0x0000003c   Code   RO          939    !!!scatter          c_t.l(__scatter.o)
-    0x00000154   0x00000028   Code   RO          941    !!handler_copy      c_t.l(__scatter_copy.o)
-    0x0000017c   0x0000002c   Code   RO          943    !!handler_zi        c_t.l(__scatter_zi.o)
-    0x000001a8   0x00000008   Ven    RO          809    .ARM.Collect$$libinit$$00000000  c_t.l(libinit.o)
-    0x000001b0   0x00000002   Code   RO          809    .ARM.Collect$$libinit$$00000000  c_t.l(libinit.o)
-    0x000001b2   0x00000000   Code   RO          822    .ARM.Collect$$libinit$$00000002  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          824    .ARM.Collect$$libinit$$00000004  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          827    .ARM.Collect$$libinit$$0000000A  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          829    .ARM.Collect$$libinit$$0000000C  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          831    .ARM.Collect$$libinit$$0000000E  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          834    .ARM.Collect$$libinit$$00000011  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          836    .ARM.Collect$$libinit$$00000013  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          838    .ARM.Collect$$libinit$$00000015  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          840    .ARM.Collect$$libinit$$00000017  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          842    .ARM.Collect$$libinit$$00000019  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          844    .ARM.Collect$$libinit$$0000001B  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          846    .ARM.Collect$$libinit$$0000001D  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          848    .ARM.Collect$$libinit$$0000001F  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          850    .ARM.Collect$$libinit$$00000021  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          852    .ARM.Collect$$libinit$$00000023  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          854    .ARM.Collect$$libinit$$00000025  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          858    .ARM.Collect$$libinit$$0000002C  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          860    .ARM.Collect$$libinit$$0000002E  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          862    .ARM.Collect$$libinit$$00000030  c_t.l(libinit2.o)
-    0x000001b2   0x00000000   Code   RO          864    .ARM.Collect$$libinit$$00000032  c_t.l(libinit2.o)
-    0x000001b2   0x0000000c   Code   RO          865    .ARM.Collect$$libinit$$00000033  c_t.l(libinit2.o)
+    0x00000110   0x00000008   Code   RO          759  * !!!main             c_t.l(__main.o)
+    0x00000118   0x0000003c   Code   RO          960    !!!scatter          c_t.l(__scatter.o)
+    0x00000154   0x00000028   Code   RO          962    !!handler_copy      c_t.l(__scatter_copy.o)
+    0x0000017c   0x0000002c   Code   RO          964    !!handler_zi        c_t.l(__scatter_zi.o)
+    0x000001a8   0x00000008   Ven    RO          830    .ARM.Collect$$libinit$$00000000  c_t.l(libinit.o)
+    0x000001b0   0x00000002   Code   RO          830    .ARM.Collect$$libinit$$00000000  c_t.l(libinit.o)
+    0x000001b2   0x00000000   Code   RO          843    .ARM.Collect$$libinit$$00000002  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          845    .ARM.Collect$$libinit$$00000004  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          848    .ARM.Collect$$libinit$$0000000A  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          850    .ARM.Collect$$libinit$$0000000C  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          852    .ARM.Collect$$libinit$$0000000E  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          855    .ARM.Collect$$libinit$$00000011  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          857    .ARM.Collect$$libinit$$00000013  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          859    .ARM.Collect$$libinit$$00000015  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          861    .ARM.Collect$$libinit$$00000017  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          863    .ARM.Collect$$libinit$$00000019  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          865    .ARM.Collect$$libinit$$0000001B  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          867    .ARM.Collect$$libinit$$0000001D  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          869    .ARM.Collect$$libinit$$0000001F  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          871    .ARM.Collect$$libinit$$00000021  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          873    .ARM.Collect$$libinit$$00000023  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          875    .ARM.Collect$$libinit$$00000025  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          879    .ARM.Collect$$libinit$$0000002C  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          881    .ARM.Collect$$libinit$$0000002E  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          883    .ARM.Collect$$libinit$$00000030  c_t.l(libinit2.o)
+    0x000001b2   0x00000000   Code   RO          885    .ARM.Collect$$libinit$$00000032  c_t.l(libinit2.o)
+    0x000001b2   0x0000000c   Code   RO          886    .ARM.Collect$$libinit$$00000033  c_t.l(libinit2.o)
     0x000001be   0x00000002   PAD
-    0x000001c0   0x00000008   Ven    RO          896    .ARM.Collect$$libshutdown$$00000000  c_t.l(libshutdown.o)
-    0x000001c8   0x00000004   Code   RO          896    .ARM.Collect$$libshutdown$$00000000  c_t.l(libshutdown.o)
-    0x000001cc   0x00000000   Code   RO          922    .ARM.Collect$$libshutdown$$00000002  c_t.l(libshutdown2.o)
-    0x000001cc   0x00000000   Code   RO          924    .ARM.Collect$$libshutdown$$00000004  c_t.l(libshutdown2.o)
-    0x000001cc   0x00000000   Code   RO          927    .ARM.Collect$$libshutdown$$00000007  c_t.l(libshutdown2.o)
-    0x000001cc   0x00000000   Code   RO          930    .ARM.Collect$$libshutdown$$0000000A  c_t.l(libshutdown2.o)
-    0x000001cc   0x00000000   Code   RO          932    .ARM.Collect$$libshutdown$$0000000C  c_t.l(libshutdown2.o)
-    0x000001cc   0x00000000   Code   RO          935    .ARM.Collect$$libshutdown$$0000000F  c_t.l(libshutdown2.o)
-    0x000001cc   0x00000006   Code   RO          936    .ARM.Collect$$libshutdown$$00000010  c_t.l(libshutdown2.o)
+    0x000001c0   0x00000008   Ven    RO          917    .ARM.Collect$$libshutdown$$00000000  c_t.l(libshutdown.o)
+    0x000001c8   0x00000004   Code   RO          917    .ARM.Collect$$libshutdown$$00000000  c_t.l(libshutdown.o)
+    0x000001cc   0x00000000   Code   RO          943    .ARM.Collect$$libshutdown$$00000002  c_t.l(libshutdown2.o)
+    0x000001cc   0x00000000   Code   RO          945    .ARM.Collect$$libshutdown$$00000004  c_t.l(libshutdown2.o)
+    0x000001cc   0x00000000   Code   RO          948    .ARM.Collect$$libshutdown$$00000007  c_t.l(libshutdown2.o)
+    0x000001cc   0x00000000   Code   RO          951    .ARM.Collect$$libshutdown$$0000000A  c_t.l(libshutdown2.o)
+    0x000001cc   0x00000000   Code   RO          953    .ARM.Collect$$libshutdown$$0000000C  c_t.l(libshutdown2.o)
+    0x000001cc   0x00000000   Code   RO          956    .ARM.Collect$$libshutdown$$0000000F  c_t.l(libshutdown2.o)
+    0x000001cc   0x00000006   Code   RO          957    .ARM.Collect$$libshutdown$$00000010  c_t.l(libshutdown2.o)
     0x000001d2   0x00000002   PAD
-    0x000001d4   0x00000000   Code   RO          748    .ARM.Collect$$rtentry$$00000000  c_t.l(__rtentry.o)
-    0x000001d4   0x00000000   Code   RO          774    .ARM.Collect$$rtentry$$00000002  c_t.l(__rtentry2.o)
-    0x000001d4   0x00000008   Code   RO          786    .ARM.Collect$$rtentry$$00000004  c_t.l(__rtentry4.o)
-    0x000001dc   0x00000000   Code   RO          776    .ARM.Collect$$rtentry$$00000009  c_t.l(__rtentry2.o)
-    0x000001dc   0x00000004   Code   RO          777    .ARM.Collect$$rtentry$$0000000A  c_t.l(__rtentry2.o)
-    0x000001e0   0x00000000   Code   RO          779    .ARM.Collect$$rtentry$$0000000C  c_t.l(__rtentry2.o)
-    0x000001e0   0x00000028   Code   RO          780    .ARM.Collect$$rtentry$$0000000D  c_t.l(__rtentry2.o)
-    0x00000208   0x00000004   Ven    RO          813    .ARM.Collect$$rtexit$$00000000  c_t.l(rtexit.o)
-    0x0000020c   0x00000004   Code   RO          813    .ARM.Collect$$rtexit$$00000000  c_t.l(rtexit.o)
-    0x00000210   0x00000000   Code   RO          869    .ARM.Collect$$rtexit$$00000002  c_t.l(rtexit2.o)
-    0x00000210   0x00000004   Code   RO          870    .ARM.Collect$$rtexit$$00000003  c_t.l(rtexit2.o)
-    0x00000214   0x00000008   Code   RO          871    .ARM.Collect$$rtexit$$00000004  c_t.l(rtexit2.o)
+    0x000001d4   0x00000000   Code   RO          769    .ARM.Collect$$rtentry$$00000000  c_t.l(__rtentry.o)
+    0x000001d4   0x00000000   Code   RO          795    .ARM.Collect$$rtentry$$00000002  c_t.l(__rtentry2.o)
+    0x000001d4   0x00000008   Code   RO          807    .ARM.Collect$$rtentry$$00000004  c_t.l(__rtentry4.o)
+    0x000001dc   0x00000000   Code   RO          797    .ARM.Collect$$rtentry$$00000009  c_t.l(__rtentry2.o)
+    0x000001dc   0x00000004   Code   RO          798    .ARM.Collect$$rtentry$$0000000A  c_t.l(__rtentry2.o)
+    0x000001e0   0x00000000   Code   RO          800    .ARM.Collect$$rtentry$$0000000C  c_t.l(__rtentry2.o)
+    0x000001e0   0x00000028   Code   RO          801    .ARM.Collect$$rtentry$$0000000D  c_t.l(__rtentry2.o)
+    0x00000208   0x00000004   Ven    RO          834    .ARM.Collect$$rtexit$$00000000  c_t.l(rtexit.o)
+    0x0000020c   0x00000004   Code   RO          834    .ARM.Collect$$rtexit$$00000000  c_t.l(rtexit.o)
+    0x00000210   0x00000000   Code   RO          890    .ARM.Collect$$rtexit$$00000002  c_t.l(rtexit2.o)
+    0x00000210   0x00000004   Code   RO          891    .ARM.Collect$$rtexit$$00000003  c_t.l(rtexit2.o)
+    0x00000214   0x00000008   Code   RO          892    .ARM.Collect$$rtexit$$00000004  c_t.l(rtexit2.o)
     0x0000021c   0x00000020   Code   RO            4    .text               startup.o
-    0x0000023c   0x000002d0   Code   RO          682    .text               c_t.l(lludiv.o)
-    0x0000050c   0x00000180   Code   RO          720    .text               c_t.l(aeabi_sdiv.o)
-    0x0000068c   0x00000006   Code   RO          736    .text               c_t.l(heapauxi.o)
+    0x0000023c   0x000002d0   Code   RO          703    .text               c_t.l(lludiv.o)
+    0x0000050c   0x00000180   Code   RO          741    .text               c_t.l(aeabi_sdiv.o)
+    0x0000068c   0x00000006   Code   RO          757    .text               c_t.l(heapauxi.o)
     0x00000692   0x00000002   PAD
-    0x00000694   0x00000060   Code   RO          796    .text               c_t.l(sys_stackheap_outer.o)
-    0x000006f4   0x00000014   Code   RO          798    .text               c_t.l(exit.o)
-    0x00000708   0x0000000c   Code   RO          810    .text               c_t.l(libspace.o)
-    0x00000714   0x00000008   Ven    RO          866    .text               c_t.l(sys_exit.o)
-    0x0000071c   0x0000000c   Code   RO          866    .text               c_t.l(sys_exit.o)
-    0x00000728   0x00000004   Code   RO          885    .text               c_t.l(use_no_semi.o)
-    0x0000072c   0x00000000   Code   RO          887    .text               c_t.l(indicate_semi.o)
-    0x0000072c   0x00000024   Code   RO          721    .text_udiv          c_t.l(aeabi_sdiv.o)
+    0x00000694   0x00000060   Code   RO          817    .text               c_t.l(sys_stackheap_outer.o)
+    0x000006f4   0x00000014   Code   RO          819    .text               c_t.l(exit.o)
+    0x00000708   0x0000000c   Code   RO          831    .text               c_t.l(libspace.o)
+    0x00000714   0x00000008   Ven    RO          887    .text               c_t.l(sys_exit.o)
+    0x0000071c   0x0000000c   Code   RO          887    .text               c_t.l(sys_exit.o)
+    0x00000728   0x00000004   Code   RO          906    .text               c_t.l(use_no_semi.o)
+    0x0000072c   0x00000000   Code   RO          908    .text               c_t.l(indicate_semi.o)
+    0x0000072c   0x00000024   Code   RO          742    .text_udiv          c_t.l(aeabi_sdiv.o)
     0x00000750   0x000000e4   Code   RO          229    i.Serial0Handler    serial.o
     0x00000834   0x00000034   Code   RO           52    i.delay_ms          delay.o
-    0x00000868   0x000000c0   Code   RO          451    i.i2c_eeprom_test   demo.o
-    0x00000928   0x00000050   Code   RO          359    i.i2c_init          i2c.o
-    0x00000978   0x0000006c   Code   RO          360    i.i2c_read          i2c.o
-    0x000009e4   0x00000064   Code   RO          361    i.i2c_read_buffer   i2c.o
-    0x00000a48   0x0000002c   Code   RO          362    i.i2c_restart       i2c.o
-    0x00000a74   0x00000038   Code   RO          363    i.i2c_start         i2c.o
-    0x00000aac   0x0000001c   Code   RO          364    i.i2c_stop          i2c.o
-    0x00000ac8   0x00000060   Code   RO          365    i.i2c_wait_status   i2c.o
-    0x00000b28   0x00000048   Code   RO          366    i.i2c_write         i2c.o
-    0x00000b70   0x00000074   Code   RO          367    i.i2c_write_buffer  i2c.o
-    0x00000be4   0x00000090   Code   RO          102    i.install_irq       irq.o
-    0x00000c74   0x00000014   Code   RO          425    i.main              main.o
-    0x00000c88   0x000000e0   Code   RO          232    i.serial0_buff      serial.o
-    0x00000d68   0x000000cc   Code   RO          234    i.serial0_init      serial.o
-    0x00000e34   0x00000028   Code   RO          235    i.serial0_print     serial.o
-    0x00000e5c   0x00000040   Code   RO          238    i.serial0_write     serial.o
-    0x00000e9c   0x00000008   Data   RO          454    .constdata          demo.o
-    0x00000ea4   0x00000020   Data   RO          937    Region$$Table       anon$$obj.o
+    0x00000868   0x00000158   Code   RO          442    i.get_time_date     demo.o
+    0x000009c0   0x00000020   Code   RO          446    i.hex_to_str        demo.o
+    0x000009e0   0x00000050   Code   RO          359    i.i2c_init          i2c.o
+    0x00000a30   0x0000006c   Code   RO          360    i.i2c_read          i2c.o
+    0x00000a9c   0x00000064   Code   RO          361    i.i2c_read_buffer   i2c.o
+    0x00000b00   0x0000002c   Code   RO          362    i.i2c_restart       i2c.o
+    0x00000b2c   0x0000005c   Code   RO          448    i.i2c_rtc_test      demo.o
+    0x00000b88   0x00000038   Code   RO          363    i.i2c_start         i2c.o
+    0x00000bc0   0x0000001c   Code   RO          364    i.i2c_stop          i2c.o
+    0x00000bdc   0x00000060   Code   RO          365    i.i2c_wait_status   i2c.o
+    0x00000c3c   0x00000048   Code   RO          366    i.i2c_write         i2c.o
+    0x00000c84   0x00000090   Code   RO          102    i.install_irq       irq.o
+    0x00000d14   0x00000014   Code   RO          425    i.main              main.o
+    0x00000d28   0x000000e0   Code   RO          232    i.serial0_buff      serial.o
+    0x00000e08   0x000000cc   Code   RO          234    i.serial0_init      serial.o
+    0x00000ed4   0x00000028   Code   RO          235    i.serial0_print     serial.o
+    0x00000efc   0x00000040   Code   RO          238    i.serial0_write     serial.o
+    0x00000f3c   0x00000020   Data   RO          958    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x40000000, Size: 0x00000900, Max: 0x00008000, ABSOLUTE)
@@ -889,7 +902,7 @@ Memory Map of the image
     0x40000000   0x00000012   Data   RW          248    .data               serial.o
     0x40000012   0x00000002   PAD
     0x40000014   0x00000400   Zero   RW          247    .bss                serial.o
-    0x40000414   0x00000060   Zero   RW          811    .bss                c_t.l(libspace.o)
+    0x40000414   0x00000060   Zero   RW          832    .bss                c_t.l(libspace.o)
     0x40000474   0x00000004   PAD
     0x40000478   0x00000000   Zero   RW            2    HEAP                startup.o
     0x40000478   0x00000488   Zero   RW            1    STACK               startup.o
@@ -904,15 +917,15 @@ Image component sizes
 
          0          0          0          0          0       4500   adc.o
         52          4          0          0          0        475   delay.o
-       192         64          8          0          0        502   demo.o
-       700         36          0          0          0       5066   i2c.o
+       468         48          0          0          0       1584   demo.o
+       584         28          0          0          0       4379   i2c.o
        144          4          0          0          0       1098   irq.o
         20          0          0          0          0        411   main.o
        760         44          0         18       1024       3761   serial.o
        304         60          0          0       1160        524   startup.o
 
     ----------------------------------------------------------------------
-      2172        212         40         20       2184      16337   Object Totals
+      2332        188         32         20       2184      16732   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          0          0          0          2          0          0   (incl. Padding)
 
@@ -963,15 +976,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3740        296         40         20       2284      16277   Grand Totals
-      3740        296         40         20       2284      16277   ELF Image Totals
-      3740        296         40         20          0          0   ROM Totals
+      3900        272         32         20       2284      16620   Grand Totals
+      3900        272         32         20       2284      16620   ELF Image Totals
+      3900        272         32         20          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 3780 (   3.69kB)
+    Total RO  Size (Code + RO Data)                 3932 (   3.84kB)
     Total RW  Size (RW Data + ZI Data)              2304 (   2.25kB)
-    Total ROM Size (Code + RO Data + RW Data)       3800 (   3.71kB)
+    Total ROM Size (Code + RO Data + RW Data)       3952 (   3.86kB)
 
 ==============================================================================
 

@@ -1,6 +1,6 @@
 #ifndef I2C_H_
 #define I2C_H_
-#define RTC_DEVADDR 0xA0
+#define RTC_DEVADDR 0xD0
 
 void i2c_init (void);
 

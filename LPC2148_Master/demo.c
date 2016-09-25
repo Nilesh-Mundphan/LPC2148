@@ -6,9 +6,72 @@
 #include "gsm.h"
 #include "hcsr04.h"
 #include "i2c.h"
+#include "Nstring.h"
 #include <stdio.h>
 
 #include "demo.h"
+
+void set_time_date(uint8_t *rtc_str)
+{
+	i2c_write_buffer(0,rtc_str,7);
+}
+void hex_to_str(uint8_t value,char *str)
+{
+	str[0]=48+((value & 0x70)>>4);
+	str[1]=48+(value & 0x0f);
+}
+
+void get_time_date(char *rtc_str)
+{
+	uint8_t rtc_buffer[8];
+	char h_s[2];
+	if (!i2c_read_buffer(0,rtc_buffer,7))		// Read date and time from RTC 
+			serial0_print("\nMemory Read error....");
+  	
+	
+	hex_to_str(rtc_buffer[4],h_s);
+	rtc_str[0]=h_s[0];rtc_str[1]=h_s[1];rtc_str[2]='/';
+	hex_to_str(rtc_buffer[5],h_s);
+	rtc_str[3]=h_s[0];rtc_str[4]=h_s[1];rtc_str[5]='/';
+	hex_to_str(rtc_buffer[6],h_s);
+	rtc_str[6]=h_s[0];rtc_str[7]=h_s[1];rtc_str[8]=' ';
+	
+	hex_to_str(rtc_buffer[2],h_s);
+	rtc_str[9]=h_s[0];rtc_str[10]=h_s[1];rtc_str[11]=':';
+	hex_to_str(rtc_buffer[1],h_s);
+	rtc_str[12]=h_s[0];rtc_str[13]=h_s[1];rtc_str[14]=':';
+	hex_to_str(rtc_buffer[0],h_s);
+	rtc_str[15]=h_s[0];rtc_str[16]=h_s[1];rtc_str[17]=' ';
+	
+	if(rtc_buffer[2] > 0x12)
+	{
+		rtc_str[18]='P';
+		rtc_str[19]='M';
+	}
+	else
+	{
+		rtc_str[18]='A';
+		rtc_str[19]='M';
+	}
+	rtc_str[20]='\0';
+}
+
+void i2c_rtc_test(void)
+{	
+	serial0_init(9600);
+	serial0_print("I2C RTC Testing\r\n");
+	i2c_init();
+	while(1)
+	{
+		uint8_t read_buffer[24];
+		get_time_date((char *)read_buffer);
+		serial0_print((char *)read_buffer);	
+		serial0_print("\r\n");	
+		delay_ms(1000);
+	}
+
+}
+
 void i2c_eeprom_test(void)
 {
 	uint8_t write_buffer[8]="Nilesh",read_buffer[8];
@@ -19,16 +82,15 @@ void i2c_eeprom_test(void)
 	i2c_write_buffer(0,write_buffer,6);
 	serial0_print("Write Done\r\n");
 	
-	while(1){
-	if (!i2c_read_buffer(0,read_buffer,6))		// Read date and time from RTC 
-					serial0_print("\nMemory Read error....");
+	while(1)
+	{
+		if (!i2c_read_buffer(0,read_buffer,6))		// Read date and time from RTC 
+			serial0_print("\nMemory Read error....");
 		
 		serial0_print((char *)read_buffer);	
-	serial0_print("\r\n");	
-	delay_ms(1000);
+		serial0_print("\r\n");	
+		delay_ms(1000);
 	}
-
-
 }
 void hcsr04_test(void)
 {
