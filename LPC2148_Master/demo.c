@@ -4,7 +4,51 @@
 #include "serial.h"
 #include "adc.h"
 #include "gsm.h"
+#include "hcsr04.h"
+#include "i2c.h"
 #include <stdio.h>
+
+#include "demo.h"
+void i2c_eeprom_test(void)
+{
+	uint8_t write_buffer[8]="Nilesh",read_buffer[8];
+  	
+	serial0_init(9600);
+	serial0_print("I2C Testing\r\n");
+	i2c_init();
+	i2c_write_buffer(0,write_buffer,6);
+	serial0_print("Write Done\r\n");
+	
+	while(1){
+	if (!i2c_read_buffer(0,read_buffer,6))		// Read date and time from RTC 
+					serial0_print("\nMemory Read error....");
+		
+		serial0_print((char *)read_buffer);	
+	serial0_print("\r\n");	
+	delay_ms(1000);
+	}
+
+
+}
+void hcsr04_test(void)
+{
+    uint32_t d=0;
+    char line1[16];    
+		
+		serial0_init(9600);
+	  serial0_print("HCSR04 Testing\r\n");
+		HCSR04_init();
+	  while(1)
+    {
+        HCSR04_trigger();
+        d=get_pulse_width();
+        
+        sprintf(line1,"Distance : %d",(d/58));
+        serial0_print(line1);
+			  serial0_print("\r\n");
+				delay_ms(500);
+    }
+}
 
 void gsm_test(void)
 {

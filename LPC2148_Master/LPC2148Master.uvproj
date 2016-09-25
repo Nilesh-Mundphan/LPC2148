@@ -330,7 +330,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\lib\adc;.\lib\delay;.\lib\gpio;.\lib\irq;.\lib\nstring;.\lib\serial;.\lib\system;.\modules\gsm;.\modules\lcd;.\modules\dht11</IncludePath>
+              <IncludePath>.\lib\adc;.\lib\delay;.\lib\gpio;.\lib\irq;.\lib\nstring;.\lib\serial;.\lib\system;.\modules\gsm;.\modules\lcd;.\modules\dht11;.\modules\hcsr04</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -413,6 +413,11 @@
               <FileType>1</FileType>
               <FilePath>.\lib\serial\serial.c</FilePath>
             </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\i2c.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -447,6 +452,11 @@
               <FileName>dht11.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\modules\dht11\dht11.c</FilePath>
+            </File>
+            <File>
+              <FileName>hcsr04.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\modules\hcsr04\hcsr04.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -6,4 +6,7 @@
 .\objects\demo.o: .\lib\serial\serial.h
 .\objects\demo.o: .\lib\adc\adc.h
 .\objects\demo.o: .\modules\gsm\gsm.h
+.\objects\demo.o: .\modules\hcsr04\hcsr04.h
+.\objects\demo.o: .\lib\i2c\i2c.h
 .\objects\demo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\demo.o: demo.h
