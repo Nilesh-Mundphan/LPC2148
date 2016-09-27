@@ -4,5 +4,5 @@
 
 int main(void)
 {
-	i2c_rtc_test();
+		mcp32_test();
 }

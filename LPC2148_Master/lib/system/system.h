@@ -7,11 +7,10 @@
 
 #include <stdint.h>
 #include <stdio.h>
+
 #ifndef NULL
 #define NULL    ((void *)0)
 #endif
-
-
 
 #define FAIL	( 9 )
 #define SUCCESS	( 10 )

@@ -10,6 +10,26 @@
 #include <stdio.h>
 
 #include "demo.h"
+#include "spi.h"
+#include "mcp320x.h"
+
+void mcp32_test(void)
+{
+    char val[32];
+    uint16_t result;
+	  spi_init();
+    serial0_init(9600);
+    serial0_print("External SPI Test\r\n");
+    
+		while(1)
+		{
+				result=read_mcp320x(0);
+				sprintf(val,"Channel 0 :%5.0d",result);
+				serial0_print(val);
+        serial0_print("\r\n");
+				delay_ms(1000);
+	  }
+}
 
 void set_time_date(uint8_t *rtc_str)
 {
@@ -161,6 +181,7 @@ while(1)
 		
 		adc_data6=adc0_read(6);
 		adc_data7=adc0_read(7);
+		
 		
 		sprintf(ds,"ADC1: %5.0d ADC2: %5.0d ADC3: %5.0d ADC6: %5.0d ADC7: %5.0d",adc_data1,adc_data2,adc_data3,adc_data6,adc_data7);
 	  serial0_print(ds);

@@ -7,12 +7,14 @@
 ".\objects\nstring.o"
 ".\objects\serial.o"
 ".\objects\i2c.o"
+".\objects\spi.o"
 ".\objects\main.o"
 ".\objects\demo.o"
 ".\objects\gsm.o"
 ".\objects\lcd.o"
 ".\objects\dht11.o"
 ".\objects\hcsr04.o"
+".\objects\mcp320x.o"
 --strict --scatter ".\Objects\LPC2148Master.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

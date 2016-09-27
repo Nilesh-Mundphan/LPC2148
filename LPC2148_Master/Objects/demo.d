@@ -11,3 +11,5 @@
 .\objects\demo.o: .\lib\nstring\Nstring.h
 .\objects\demo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\demo.o: demo.h
+.\objects\demo.o: .\lib\spi\spi.h
+.\objects\demo.o: .\modules\mcp320x\mcp320x.h
