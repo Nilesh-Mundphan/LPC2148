@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include "demo.h"
 #include "delay.h"
 #include "gpio.h"
 #include "lcd.h"
@@ -7,12 +9,26 @@
 #include "hcsr04.h"
 #include "i2c.h"
 #include "Nstring.h"
-#include <stdio.h>
-
-#include "demo.h"
 #include "spi.h"
 #include "mcp320x.h"
-
+#include "rtc.h"
+void rtc_test(void)
+{
+char val[32];
+	  RTCTime rtc;
+    rtc.RTC_Hour=21;rtc.RTC_Min=0;rtc.RTC_Sec=0;
+    rtc_set_time(rtc);	
+		serial0_init(9600);
+    serial0_print("RTC Test\r\n");
+	  rtc_init();
+	  while(1){
+		    rtc=rtc_get_time();
+			  sprintf(val,"Time: %d:%d:%d",rtc.RTC_Hour,rtc.RTC_Min,rtc.RTC_Sec);
+				serial0_print(val);
+        serial0_print("\r\n");
+				delay_ms(1000);
+		}
+}
 void mcp32_test(void)
 {
     char val[32];

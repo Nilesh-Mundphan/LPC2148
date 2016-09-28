@@ -330,7 +330,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\lib\adc;.\lib\delay;.\lib\gpio;.\lib\irq;.\lib\nstring;.\lib\serial;.\lib\system;.\modules\gsm;.\modules\lcd;.\modules\dht11;.\modules\hcsr04;.\lib\i2c</IncludePath>
+              <IncludePath>.\lib\adc;.\lib\delay;.\lib\gpio;.\lib\irq;.\lib\nstring;.\lib\serial;.\lib\system;.\modules\gsm;.\modules\lcd;.\modules\dht11;.\modules\hcsr04;.\lib\i2c;.\lib\spi;.\modules\mcp320x;.\lib\rtc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -418,6 +418,16 @@
               <FileType>1</FileType>
               <FilePath>.\lib\i2c\i2c.c</FilePath>
             </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\spi\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lib\rtc\rtc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -457,6 +467,11 @@
               <FileName>hcsr04.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\modules\hcsr04\hcsr04.c</FilePath>
+            </File>
+            <File>
+              <FileName>mcp320x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\modules\mcp320x\mcp320x.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -8,6 +8,7 @@
 ".\objects\serial.o"
 ".\objects\i2c.o"
 ".\objects\spi.o"
+".\objects\rtc.o"
 ".\objects\main.o"
 ".\objects\demo.o"
 ".\objects\gsm.o"

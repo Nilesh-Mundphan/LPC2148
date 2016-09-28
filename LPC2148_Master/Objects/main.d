@@ -3,6 +3,7 @@
 .\objects\main.o: .\lib\system\LPC214x.H
 .\objects\main.o: .\lib\delay\delay.h
 .\objects\main.o: .\lib\gpio\gpio.h
+.\objects\main.o: .\lib\system\target.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: demo.h

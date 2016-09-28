@@ -3,6 +3,7 @@
 .\objects\gsm.o: .\lib\system\LPC214x.H
 .\objects\gsm.o: .\lib\delay\delay.h
 .\objects\gsm.o: .\lib\gpio\gpio.h
+.\objects\gsm.o: .\lib\system\target.h
 .\objects\gsm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\gsm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\gsm.o: modules\gsm\gsm.h
