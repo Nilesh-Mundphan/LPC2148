@@ -16,6 +16,7 @@
 ".\objects\dht11.o"
 ".\objects\hcsr04.o"
 ".\objects\mcp320x.o"
+".\objects\oled.o"
 --strict --scatter ".\Objects\LPC2148Master.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

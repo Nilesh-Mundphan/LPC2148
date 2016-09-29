@@ -8,3 +8,4 @@
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: demo.h
 .\objects\main.o: .\lib\serial\serial.h
+.\objects\main.o: .\modules\ssd1306\oled.h

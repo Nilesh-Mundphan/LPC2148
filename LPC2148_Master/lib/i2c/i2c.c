@@ -7,11 +7,12 @@ void i2c_init (void)
 		PCONP	|= 0x00000080;
 		// Define port pin as SDA and SCL
 		PINSEL0	|= 0x00000050 ;
-		I20CONCLR	= 0x6C;	// clear all I2C config bits
+		
+	  I20CONCLR	= 0x6C;	// clear all I2C config bits
 		I20CONSET	= 0x40;	// set I2EN
 		// I2C Clock Duty Cycle (high and low), 100KHz
-		I20SCLH 	= 60;
-		I20SCLL 	= 60;
+		I20SCLH 	= 10;
+		I20SCLL 	= 10;
 }
 
 uint8_t i2c_start (void)
@@ -64,11 +65,16 @@ void i2c_stop (void)
 
 uint8_t i2c_wait_status (uint8_t u8status)
 {	
-	uint32_t t_out=0;
+	
+	while(I20STAT != u8status){}
+	
+	/*uint32_t t_out=0;
 
+	
+	
 	while (t_out < 1000) 
 	{
-		delay_ms(1);t_out++;
+		  delay_ms(1);t_out++;
 			if (I20CONSET & 8) // poll SI bit
 			{
 				if (I20STAT == u8status)
@@ -76,7 +82,8 @@ uint8_t i2c_wait_status (uint8_t u8status)
 					return TRUE;
 				}
 		}
-	}
+	}*/
+		
 	return FALSE;	
 }
 
