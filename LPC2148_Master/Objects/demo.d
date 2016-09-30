@@ -14,3 +14,5 @@
 .\objects\demo.o: .\lib\spi\spi.h
 .\objects\demo.o: .\modules\mcp320x\mcp320x.h
 .\objects\demo.o: .\lib\rtc\rtc.h
+.\objects\demo.o: .\modules\ssd1306\oled.h
+.\objects\demo.o: .\modules\keypad\keypad.h

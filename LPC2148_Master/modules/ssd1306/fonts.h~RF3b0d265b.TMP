@@ -1,4 +1,3 @@
-
 const char ArialMT_Plain_10[]= {
 	0x0A, // Width: 10
 	0x0D, // Height: 13

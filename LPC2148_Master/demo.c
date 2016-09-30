@@ -12,6 +12,44 @@
 #include "spi.h"
 #include "mcp320x.h"
 #include "rtc.h"
+#include "oled.h"
+#include "keypad.h"
+
+void keypad_test(void)
+{
+	  uint8_t key;
+		char val[16];
+		serial0_init(9600);
+    serial0_print("4x4 Keypad Test\r\n");
+		
+		while(1)
+		{
+			key=get_keypad_key();
+      if(key!=0xff){
+				sprintf(val,"( %d ) Key Is Pressed ",key);
+				serial0_print(val);
+				serial0_print("\r\n");
+				delay_ms(300);
+			}
+		}
+}
+
+
+void oled_test(void)
+{
+		oled_init();
+		oled_reset();
+		oled_fill(0x55);
+		delay_ms(500);
+		oled_clear();
+		oled_fill(0x00);
+		oled_print_xy(0,0,"Latest");
+		oled_print_xy(0,30,"Embedded");
+		while(1);
+
+
+
+}
 void rtc_test(void)
 {
 char val[32];

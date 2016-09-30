@@ -1,6 +1,8 @@
 #ifndef DEMO_H_
 #define DEMO_H_
 
+void keypad_test(void);
+void oled_test(void);
 void rtc_test(void);
 void mcp32_test(void);
 void i2c_rtc_test(void);
