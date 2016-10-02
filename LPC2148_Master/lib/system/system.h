@@ -2,9 +2,11 @@
 #define _SYSTEM_H
 
 #include "LPC214x.H"
+#include "irq.h"
 #include "delay.h"
 #include "gpio.h"
 #include "target.h"
+
 #include <stdint.h>
 #include <stdio.h>
 

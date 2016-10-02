@@ -1,7 +1,8 @@
-#include <stdio.h>
+#include "system.h"
 #include "demo.h"
 #include "delay.h"
 #include "gpio.h"
+#include "irq.h"
 #include "lcd.h"
 #include "serial.h"
 #include "adc.h"
@@ -14,75 +15,117 @@
 #include "rtc.h"
 #include "oled.h"
 #include "keypad.h"
+#include "dht11.h"
+#include "extint.h"
+
+void EINT0_Handler(void) __irq
+{
+	EXTINT=EINT0;
+	serial0_print("Interrupt \r\n");
+	delay_ms(100);
+	VICVectAddr = 0x00;
+}
+
+void external_int_test(void)
+{
+	serial0_init(9600);
+  serial0_print("EINT Testing ....\r\n");
+	delay_ms(100);	
+	EINT_init(0,EDGE,FALLING_EDGE,(void *)EINT0_Handler);
+	while(1)
+	{
+		
+	}
+}
+void dht11_test(void)
+{
+    char disp[20];
+    serial0_init(9600);
+    serial0_print("DHT11 Testing ....\r\n");
+    while(1)
+    {
+        dht_read11(DHT_PIN);
+        serial0_print("--------------------\r\n");
+				sprintf(disp,"Temperature :%d",temperature);
+				serial0_print(disp);
+        serial0_print("\r\n");
+        sprintf(disp,"Humidity :%d",humidity);
+				serial0_print(disp);
+        serial0_print("\r\n");
+        serial0_print("--------------------\r\n");
+        
+        delay_ms(1000);
+    }
+}
 
 void keypad_test(void)
 {
-	  uint8_t key;
-		char val[16];
-		serial0_init(9600);
-    serial0_print("4x4 Keypad Test\r\n");
-		
-		while(1)
+	uint8_t key;
+	char val[16];
+	serial0_init(9600);
+	serial0_print("4x4 Keypad Test\r\n");
+
+	while(1)
+	{
+		key=get_keypad_key();
+		if(key!=0xff)
 		{
-			key=get_keypad_key();
-      if(key!=0xff){
-				sprintf(val,"( %d ) Key Is Pressed ",key);
-				serial0_print(val);
-				serial0_print("\r\n");
-				delay_ms(300);
-			}
+			sprintf(val,"( %d ) Key Is Pressed ",key);
+			serial0_print(val);
+			serial0_print("\r\n");
+			delay_ms(300);
 		}
+	}
 }
 
 
 void oled_test(void)
 {
-		oled_init();
-		oled_reset();
-		oled_fill(0x55);
-		delay_ms(500);
-		oled_clear();
-		oled_fill(0x00);
-		oled_print_xy(0,0,"Latest");
-		oled_print_xy(0,30,"Embedded");
-		while(1);
-
-
-
+	oled_init();
+	oled_reset();
+	oled_fill(0x55);
+	delay_ms(500);
+	oled_clear();
+	oled_fill(0x00);
+	oled_print_xy(0,0,"Latest");
+	oled_print_xy(0,30,"Embedded");
+	while(1);
 }
+
 void rtc_test(void)
 {
-char val[32];
-	  RTCTime rtc;
+	char val[32];
+	RTCTime rtc;
     rtc.RTC_Hour=21;rtc.RTC_Min=0;rtc.RTC_Sec=0;
     rtc_set_time(rtc);	
-		serial0_init(9600);
+	serial0_init(9600);
     serial0_print("RTC Test\r\n");
-	  rtc_init();
-	  while(1){
-		    rtc=rtc_get_time();
-			  sprintf(val,"Time: %d:%d:%d",rtc.RTC_Hour,rtc.RTC_Min,rtc.RTC_Sec);
-				serial0_print(val);
-        serial0_print("\r\n");
-				delay_ms(1000);
-		}
+	rtc_init();
+	while(1)
+	{
+		rtc=rtc_get_time();
+		sprintf(val,"Time: %d:%d:%d",rtc.RTC_Hour,rtc.RTC_Min,rtc.RTC_Sec);
+		serial0_print(val);
+		serial0_print("\r\n");
+		delay_ms(1000);
+	}
 }
 void mcp32_test(void)
 {
     char val[32];
     uint16_t result;
-	  spi_init();
+	spi_init();
     serial0_init(9600);
     serial0_print("External SPI Test\r\n");
     
-		while(1)
-		{
-				result=read_mcp320x(0);
-				sprintf(val,"Channel 0 :%5.0d",result);
-				serial0_print(val);
-        serial0_print("\r\n");
-				delay_ms(1000);
-	  }
+	while(1)
+	{
+		result=read_mcp320x(0);
+		sprintf(val,"Channel 0 :%5.0d",result);
+		serial0_print(val);
+		serial0_print("\r\n");
+		delay_ms(1000);
+	}
 }
 
 void set_time_date(uint8_t *rtc_str)
@@ -171,74 +214,72 @@ void hcsr04_test(void)
     uint32_t d=0;
     char line1[16];    
 		
-		serial0_init(9600);
-	  serial0_print("HCSR04 Testing\r\n");
-		HCSR04_init();
-	  while(1)
+	serial0_init(9600);
+	serial0_print("HCSR04 Testing\r\n");
+	hcsr04_init();
+	
+	while(1)
     {
-        HCSR04_trigger();
-        d=get_pulse_width();
-        
-        sprintf(line1,"Distance : %d",(d/58));
-        serial0_print(line1);
-			  serial0_print("\r\n");
-				delay_ms(500);
+		hcsr04_trigger();
+		d=get_pulse_width();
+
+		sprintf(line1,"Distance : %d",(d/58));
+		serial0_print(line1);
+		serial0_print("\r\n");
+		delay_ms(500);
     }
 }
 
 void gsm_test(void)
 {
-    char msg[30],no[15],id[2];
-    char pname[10];
-    serial0_init(9600);
-	  serial0_print("GSM Testing\r\n");
-		
-	  gsm_init();
-    gsm_pname(pname);
-    serial0_print(pname);
-		serial0_print("\r\n");
-		delay_ms(2000);
+	char msg[30],no[15],id[2];
+	char pname[10];
+	serial0_init(9600);
+	serial0_print("GSM Testing\r\n");
 
-    gsm_msg_send("+919960226605","GSM Testing");
-    while(1)
-		{
+	gsm_init();
+	gsm_pname(pname);
+	serial0_print(pname);
+	serial0_print("\r\n");
+	delay_ms(2000);
+
+	gsm_msg_send("+919960226605","GSM Testing");
+	while(1)
+	{
 		while(gsm_wait(id)==0)
 		{
 			serial0_print("Waiting For Msg\r\n");
 			delay_ms(200);
 		}
-        
-        gsm_msg_read(no,msg,id);
-				serial0_print(no);
-				serial0_print("\r\n");
-		    serial0_print(msg);
-				serial0_print("\r\n");
-		
-    		delay_ms(5000);
-        
+
+		gsm_msg_read(no,msg,id);
+		serial0_print(no);
+		serial0_print("\r\n");
+		serial0_print(msg);
+		serial0_print("\r\n");
+		delay_ms(5000);
 	}
 }
 
 
 void adc_test()
 {
-char ds[128];
-uint16_t adc_data1,adc_data2,adc_data3,adc_data6,adc_data7;
-adc0_init();
-serial0_init(9600);	
+	char ds[128];
+	uint16_t adc_data1,adc_data2,adc_data3,adc_data6,adc_data7;
+	adc0_init();
+	serial0_init(9600);	
 
-while(1)
+	while(1)
 	{
 		adc_data1=adc0_read(1);
 		adc_data2=adc0_read(2);
 		adc_data3=adc0_read(3);
-		
+
 		adc_data6=adc0_read(6);
 		adc_data7=adc0_read(7);
-		
-		
+
 		sprintf(ds,"ADC1: %5.0d ADC2: %5.0d ADC3: %5.0d ADC6: %5.0d ADC7: %5.0d",adc_data1,adc_data2,adc_data3,adc_data6,adc_data7);
-	  serial0_print(ds);
+		serial0_print(ds);
 		serial0_print("\r\n");
 		delay_ms(1000);
 	}
@@ -246,33 +287,35 @@ while(1)
 
 void serial_test()
 {
-		serial0_init(9600);
-	  serial0_print("Hello LPC\r\n");
-	  while(1){
-	  if(serial0_available()>0)
+	serial0_init(9600);
+	serial0_print("Hello LPC\r\n");
+	while(1)
+	{
+		if(serial0_available()>0)
 		{
 			serial0_write(serial0_read());
-	  }
+		}
 	}
 }
 
 void gpio_test(void)
 {
     gpio_pin_mode(32,OUTPUT);
-	  while(1)
+	
+	while(1)
     {
-      gpio_pin_write(32,LOW);
+		gpio_pin_write(32,LOW);
     	delay_ms(1000);
     	gpio_pin_write(32,HIGH);
-      delay_ms(1000);
+		delay_ms(1000);
     }
 }
 
 void lcd_test(void)
 {
-		lcd_init(0,1,2,3,32,33);
+	lcd_init(0,1,2,3,32,33);
     lcd_clear();
     lcd_print_xy(0,0,"#   LCP2148   #");
     lcd_print_xy(0,1,"###  Board  ###");
-
+	while(1);
 }

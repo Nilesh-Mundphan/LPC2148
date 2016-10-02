@@ -5,8 +5,8 @@
  * Created on July 7, 2016, 10:09 PM
  */
 
-#ifndef HCSR04_H
-#define	HCSR04_H
+#ifndef hcsr04_H
+#define	hcsr04_H
 
 #ifdef	__cplusplus
 extern "C" {
@@ -20,8 +20,8 @@ extern "C" {
     
 #define US_PRESCALE 15
 	
-void HCSR04_init(void);
-void HCSR04_trigger(void);
+void hcsr04_init(void);
+void hcsr04_trigger(void);
 uint32_t get_pulse_width(void);
 
     
@@ -30,5 +30,5 @@ uint32_t get_pulse_width(void);
 }
 #endif
 
-#endif	/* HCSR04_H */
+#endif	/* hcsr04_H */
 

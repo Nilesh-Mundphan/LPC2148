@@ -5,7 +5,8 @@
 void gpio_pin_mode(unsigned char pin,unsigned char mode)
 {
 	  unsigned char _pin=pin;
-    if(_pin<16){ 	
+    
+	if(_pin<16){ 	
 			PINSEL0 &=~ (3<< (_pin*2));
 		}
 	  else if(_pin<32){ 	
@@ -21,6 +22,7 @@ void gpio_pin_mode(unsigned char pin,unsigned char mode)
 		
 		 if(_pin<32){
       
+			 
 			if(mode==INPUT){			
 				IODIR0 &=~ (1<<_pin);
 			}

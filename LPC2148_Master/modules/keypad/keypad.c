@@ -3,7 +3,7 @@
 
 uint8_t keypad_pins[8]={32,33,34,35,38,39,40,41};
 
-uint8_t get_keypad_key()
+uint8_t get_keypad_key(void)
 {
 uint8_t r,c,i;
 

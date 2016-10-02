@@ -1,10 +1,14 @@
 .\objects\demo.o: demo.c
-.\objects\demo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\demo.o: demo.h
+.\objects\demo.o: .\lib\system\system.h
+.\objects\demo.o: .\lib\system\LPC214x.H
+.\objects\demo.o: .\lib\irq\irq.h
+.\objects\demo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\demo.o: .\lib\delay\delay.h
 .\objects\demo.o: .\lib\gpio\gpio.h
+.\objects\demo.o: .\lib\system\target.h
+.\objects\demo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\demo.o: demo.h
 .\objects\demo.o: .\modules\lcd\lcd.h
-.\objects\demo.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\demo.o: .\lib\serial\serial.h
 .\objects\demo.o: .\lib\adc\adc.h
 .\objects\demo.o: .\modules\gsm\gsm.h
@@ -16,3 +20,5 @@
 .\objects\demo.o: .\lib\rtc\rtc.h
 .\objects\demo.o: .\modules\ssd1306\oled.h
 .\objects\demo.o: .\modules\keypad\keypad.h
+.\objects\demo.o: .\modules\dht11\dht11.h
+.\objects\demo.o: .\lib\extint\extint.h

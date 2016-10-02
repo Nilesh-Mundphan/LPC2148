@@ -3,13 +3,13 @@
 #include "gpio.h"
 #include "delay.h"
 
-void HCSR04_init(void)
+void hcsr04_init(void)
 {
     gpio_pin_mode(US_TRIG_POS,OUTPUT);
     gpio_pin_mode(US_ECHO_POS,INPUT);
 }
 
-void HCSR04_trigger(void)
+void hcsr04_trigger(void)
 {
     gpio_pin_write(US_TRIG_POS,HIGH);
     delay_us(20);
