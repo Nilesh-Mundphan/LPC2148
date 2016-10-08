@@ -25,4 +25,5 @@
 #define EINT3		0x00000008
 
 uint8_t EINT_init(uint32_t intt,uint32_t mode,uint32_t polar,void *fun);
+
 #endif

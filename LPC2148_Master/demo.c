@@ -17,6 +17,20 @@
 #include "keypad.h"
 #include "dht11.h"
 #include "extint.h"
+#include "nrf24.h"
+
+void nrf_test(void)
+{
+	serial0_init(9600);           				//start Serial
+	serial0_print("Setting Up");
+	delay_ms(100);
+	nrf_init();
+
+	while(1){
+		//nrf_data_integrity();
+		delay_ms(1000);
+	}
+}
 
 void EINT0_Handler(void) __irq
 {
@@ -37,25 +51,26 @@ void external_int_test(void)
 		
 	}
 }
+
 void dht11_test(void)
 {
-    char disp[20];
-    serial0_init(9600);
-    serial0_print("DHT11 Testing ....\r\n");
-    while(1)
-    {
-        dht_read11(DHT_PIN);
-        serial0_print("--------------------\r\n");
-				sprintf(disp,"Temperature :%d",temperature);
-				serial0_print(disp);
-        serial0_print("\r\n");
-        sprintf(disp,"Humidity :%d",humidity);
-				serial0_print(disp);
-        serial0_print("\r\n");
-        serial0_print("--------------------\r\n");
-        
-        delay_ms(1000);
-    }
+	char disp[20];
+	serial0_init(9600);
+	serial0_print("DHT11 Testing ....\r\n");
+	while(1)
+	{
+		dht_read11(DHT_PIN);
+		serial0_print("--------------------\r\n");
+		sprintf(disp,"Temperature :%d",temperature);
+		serial0_print(disp);
+		serial0_print("\r\n");
+		sprintf(disp,"Humidity :%d",humidity);
+		serial0_print(disp);
+		serial0_print("\r\n");
+		serial0_print("--------------------\r\n");
+
+		delay_ms(1000);
+	}
 }
 
 void keypad_test(void)
@@ -78,7 +93,6 @@ void keypad_test(void)
 	}
 }
 
-
 void oled_test(void)
 {
 	oled_init();
@@ -96,10 +110,10 @@ void rtc_test(void)
 {
 	char val[32];
 	RTCTime rtc;
-    rtc.RTC_Hour=21;rtc.RTC_Min=0;rtc.RTC_Sec=0;
-    rtc_set_time(rtc);	
+	rtc.RTC_Hour=21;rtc.RTC_Min=0;rtc.RTC_Sec=0;
+	rtc_set_time(rtc);	
 	serial0_init(9600);
-    serial0_print("RTC Test\r\n");
+	serial0_print("RTC Test\r\n");
 	rtc_init();
 	while(1)
 	{
@@ -110,14 +124,15 @@ void rtc_test(void)
 		delay_ms(1000);
 	}
 }
+
 void mcp32_test(void)
 {
-    char val[32];
-    uint16_t result;
+	char val[32];
+	uint16_t result;
 	spi_init();
-    serial0_init(9600);
-    serial0_print("External SPI Test\r\n");
-    
+	serial0_init(9600);
+	serial0_print("External SPI Test\r\n");
+
 	while(1)
 	{
 		result=read_mcp320x(0);
@@ -186,40 +201,40 @@ void i2c_rtc_test(void)
 		serial0_print("\r\n");	
 		delay_ms(1000);
 	}
-
 }
 
 void i2c_eeprom_test(void)
 {
 	uint8_t write_buffer[8]="Nilesh",read_buffer[8];
-  	
+
 	serial0_init(9600);
 	serial0_print("I2C Testing\r\n");
 	i2c_init();
 	i2c_write_buffer(0,write_buffer,6);
 	serial0_print("Write Done\r\n");
-	
+
 	while(1)
 	{
 		if (!i2c_read_buffer(0,read_buffer,6))		// Read date and time from RTC 
 			serial0_print("\nMemory Read error....");
-		
+
 		serial0_print((char *)read_buffer);	
 		serial0_print("\r\n");	
 		delay_ms(1000);
 	}
 }
+
 void hcsr04_test(void)
 {
-    uint32_t d=0;
-    char line1[16];    
-		
+	uint32_t d=0;
+	char line1[16];    
+
 	serial0_init(9600);
 	serial0_print("HCSR04 Testing\r\n");
 	hcsr04_init();
-	
+
 	while(1)
-    {
+	{
 		hcsr04_trigger();
 		d=get_pulse_width();
 
@@ -227,7 +242,7 @@ void hcsr04_test(void)
 		serial0_print(line1);
 		serial0_print("\r\n");
 		delay_ms(500);
-    }
+	}
 }
 
 void gsm_test(void)
@@ -261,8 +276,7 @@ void gsm_test(void)
 	}
 }
 
-
-void adc_test()
+void adc_test(void)
 {
 	char ds[128];
 	uint16_t adc_data1,adc_data2,adc_data3,adc_data6,adc_data7;
@@ -285,7 +299,7 @@ void adc_test()
 	}
 }
 
-void serial_test()
+void serial_test(void)
 {
 	serial0_init(9600);
 	serial0_print("Hello LPC\r\n");
@@ -300,22 +314,22 @@ void serial_test()
 
 void gpio_test(void)
 {
-    gpio_pin_mode(32,OUTPUT);
-	
+	gpio_pin_mode(32,OUTPUT);
+
 	while(1)
-    {
+	{
 		gpio_pin_write(32,LOW);
-    	delay_ms(1000);
-    	gpio_pin_write(32,HIGH);
 		delay_ms(1000);
-    }
+		gpio_pin_write(32,HIGH);
+		delay_ms(1000);
+	}
 }
 
 void lcd_test(void)
 {
 	lcd_init(0,1,2,3,32,33);
-    lcd_clear();
-    lcd_print_xy(0,0,"#   LCP2148   #");
-    lcd_print_xy(0,1,"###  Board  ###");
+	lcd_clear();
+	lcd_print_xy(0,0,"#   LCP2148   #");
+	lcd_print_xy(0,1,"###  Board  ###");
 	while(1);
 }

@@ -57,11 +57,11 @@ void lcd_nibble(unsigned char nibble)
 	}
 }
 
-void lcd_send(uint8_t byte,uint8_t rs_pin)
+void lcd_send(uint8_t byte_data,uint8_t rs_pin)
 {
 	unsigned char high_nibble=0,low_nibble=0;
-	high_nibble=byte >> 4;
-	low_nibble=(byte & 0x0F);
+	high_nibble=byte_data >> 4;
+	low_nibble=(byte_data & 0x0F);
 
 	delay_ms(3);
 	if(rs_pin==HIGH)

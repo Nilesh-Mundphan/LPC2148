@@ -10,6 +10,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#define byte uint8_t
+
 #ifndef NULL
 #define NULL    ((void *)0)
 #endif
