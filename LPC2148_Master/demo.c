@@ -20,7 +20,7 @@
 #include "nrf24.h"
 #include "mpu6050.h"
 
-void mpu_test(void)
+void mpu_example(void)
 {
 	  int16_t mpu_data[7];
     int temp=0;
@@ -39,7 +39,7 @@ void mpu_test(void)
     }
 }
 
-void nrf_test(void)
+void nrf_example(void)
 {
 	serial0_init(9600);           				//start Serial
 	serial0_print("Setting Up");
@@ -60,7 +60,7 @@ void EINT0_Handler(void) __irq
 	VICVectAddr = 0x00;
 }
 
-void external_int_test(void)
+void external_int_example(void)
 {
 	serial0_init(9600);
 	serial0_print("EINT Testing ....\r\n");
@@ -72,7 +72,7 @@ void external_int_test(void)
 	}
 }
 
-void dht11_test(void)
+void dht11_example(void)
 {
 	char disp[20];
 	serial0_init(9600);
@@ -93,7 +93,7 @@ void dht11_test(void)
 	}
 }
 
-void keypad_test(void)
+void keypad_example(void)
 {
 	uint8_t key;
 	char val[16];
@@ -113,7 +113,7 @@ void keypad_test(void)
 	}
 }
 
-void oled_test(void)
+void oled_example(void)
 {
 	oled_init();
 	oled_reset();
@@ -126,7 +126,7 @@ void oled_test(void)
 	while(1);
 }
 
-void rtc_test(void)
+void rtc_example(void)
 {
 	char val[32];
 	RTCTime rtc;
@@ -145,7 +145,7 @@ void rtc_test(void)
 	}
 }
 
-void mcp32_test(void)
+void mcp32_example(void)
 {
 	char val[32];
 	uint16_t result;
@@ -208,7 +208,7 @@ void get_time_date(char *rtc_str)
 	rtc_str[20]='\0';
 }
 
-void i2c_rtc_test(void)
+void i2c_rtc_example(void)
 {	
 	serial0_init(9600);
 	serial0_print("I2C RTC Testing\r\n");
@@ -223,7 +223,7 @@ void i2c_rtc_test(void)
 	}
 }
 
-void i2c_eeprom_test(void)
+void i2c_eeprom_example(void)
 {
 	uint8_t write_buffer[8]="Nilesh",read_buffer[8];
 
@@ -244,7 +244,7 @@ void i2c_eeprom_test(void)
 	}
 }
 
-void hcsr04_test(void)
+void hcsr04_example(void)
 {
 	uint32_t d=0;
 	char line1[16];    
@@ -265,7 +265,7 @@ void hcsr04_test(void)
 	}
 }
 
-void gsm_test(void)
+void gsm_example(void)
 {
 	char msg[30],no[15],id[2];
 	char pname[10];
@@ -296,7 +296,7 @@ void gsm_test(void)
 	}
 }
 
-void adc_test(void)
+void adc_example(void)
 {
 	char ds[128];
 	uint16_t adc_data1,adc_data2,adc_data3,adc_data6,adc_data7;
@@ -319,7 +319,7 @@ void adc_test(void)
 	}
 }
 
-void serial_test(void)
+void serial_example(void)
 {
 	serial0_init(9600);
 	serial0_print("Hello LPC\r\n");
@@ -332,7 +332,7 @@ void serial_test(void)
 	}
 }
 
-void gpio_test(void)
+void gpio_example(void)
 {
 	gpio_pin_mode(32,OUTPUT);
 
@@ -345,7 +345,7 @@ void gpio_test(void)
 	}
 }
 
-void lcd_test(void)
+void lcd_example(void)
 {
 	lcd_init(0,1,2,3,32,33);
 	lcd_clear();

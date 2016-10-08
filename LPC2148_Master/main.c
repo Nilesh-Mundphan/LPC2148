@@ -4,5 +4,5 @@
 
 int main(void)
 {
-	mpu_test();
+	mpu_example();
 }

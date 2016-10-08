@@ -1,19 +1,21 @@
 #ifndef DEMO_H_
 #define DEMO_H_
 
-void mpu_test(void);
-void nrf_test(void);
-void external_int_test(void);
-void keypad_test(void);
-void oled_test(void);
-void rtc_test(void);
-void mcp32_test(void);
-void i2c_rtc_test(void);
-void i2c_eeprom_test(void);
-void dht11_test(void);
-void gsm_test(void);
-void gpio_test(void);
-void lcd_test(void);
-void hcsr04_test(void);
+void mpu_example(void);
+void nrf_example(void);
+void external_int_example(void);
+void keypad_example(void);
+void oled_example(void);
+void rtc_example(void);
+void mcp32_example(void);
+void i2c_rtc_example(void);
+void i2c_eeprom_example(void);
+void dht11_example(void);
+void gsm_example(void);
+void gpio_example(void);
+void lcd_example(void);
+void hcsr04_example(void);
+void serial_example(void);
+void adc_example(void);
 
 #endif /* DEMO_H_ */

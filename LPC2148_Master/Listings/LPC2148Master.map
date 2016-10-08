@@ -70,130 +70,130 @@ Section Cross References
     i2c.o(i.i2c_write_buffer) refers to i2c.o(i.i2c_stop) for i2c_stop
     rtc.o(i.rtc_get_time) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
     extint.o(i.EINT_init) refers to irq.o(i.install_irq) for install_irq
-    main.o(i.main) refers to demo.o(i.mpu_test) for mpu_test
+    main.o(i.main) refers to demo.o(i.mpu_example) for mpu_example
     demo.o(i.EINT0_Handler) refers to serial.o(i.serial0_print) for serial0_print
     demo.o(i.EINT0_Handler) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.adc_test) refers to _printf_pad.o(.text) for _printf_pre_padding
-    demo.o(i.adc_test) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
-    demo.o(i.adc_test) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
-    demo.o(i.adc_test) refers to _printf_dec.o(.text) for _printf_int_dec
-    demo.o(i.adc_test) refers to adc.o(i.adc0_init) for adc0_init
-    demo.o(i.adc_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.adc_test) refers to adc.o(i.adc0_read) for adc0_read
-    demo.o(i.adc_test) refers to noretval__2sprintf.o(.text) for __2sprintf
-    demo.o(i.adc_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.adc_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.dht11_test) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
-    demo.o(i.dht11_test) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
-    demo.o(i.dht11_test) refers to _printf_dec.o(.text) for _printf_int_dec
-    demo.o(i.dht11_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.dht11_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.dht11_test) refers to dht11.o(i.dht_read11) for dht_read11
-    demo.o(i.dht11_test) refers to noretval__2sprintf.o(.text) for __2sprintf
-    demo.o(i.dht11_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.dht11_test) refers to dht11.o(.data) for temperature
-    demo.o(i.external_int_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.external_int_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.external_int_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.external_int_test) refers to extint.o(i.EINT_init) for EINT_init
-    demo.o(i.external_int_test) refers to demo.o(i.EINT0_Handler) for EINT0_Handler
+    demo.o(i.adc_example) refers to _printf_pad.o(.text) for _printf_pre_padding
+    demo.o(i.adc_example) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    demo.o(i.adc_example) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    demo.o(i.adc_example) refers to _printf_dec.o(.text) for _printf_int_dec
+    demo.o(i.adc_example) refers to adc.o(i.adc0_init) for adc0_init
+    demo.o(i.adc_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.adc_example) refers to adc.o(i.adc0_read) for adc0_read
+    demo.o(i.adc_example) refers to noretval__2sprintf.o(.text) for __2sprintf
+    demo.o(i.adc_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.adc_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.dht11_example) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    demo.o(i.dht11_example) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    demo.o(i.dht11_example) refers to _printf_dec.o(.text) for _printf_int_dec
+    demo.o(i.dht11_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.dht11_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.dht11_example) refers to dht11.o(i.dht_read11) for dht_read11
+    demo.o(i.dht11_example) refers to noretval__2sprintf.o(.text) for __2sprintf
+    demo.o(i.dht11_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.dht11_example) refers to dht11.o(.data) for temperature
+    demo.o(i.external_int_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.external_int_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.external_int_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.external_int_example) refers to extint.o(i.EINT_init) for EINT_init
+    demo.o(i.external_int_example) refers to demo.o(i.EINT0_Handler) for EINT0_Handler
     demo.o(i.get_time_date) refers to i2c.o(i.i2c_read_buffer) for i2c_read_buffer
     demo.o(i.get_time_date) refers to serial.o(i.serial0_print) for serial0_print
     demo.o(i.get_time_date) refers to demo.o(i.hex_to_str) for hex_to_str
-    demo.o(i.gpio_test) refers to gpio.o(i.gpio_pin_mode) for gpio_pin_mode
-    demo.o(i.gpio_test) refers to gpio.o(i.gpio_pin_write) for gpio_pin_write
-    demo.o(i.gpio_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.gsm_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.gsm_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.gsm_test) refers to gsm.o(i.gsm_init) for gsm_init
-    demo.o(i.gsm_test) refers to gsm.o(i.gsm_pname) for gsm_pname
-    demo.o(i.gsm_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.gsm_test) refers to gsm.o(i.gsm_msg_send) for gsm_msg_send
-    demo.o(i.gsm_test) refers to gsm.o(i.gsm_wait) for gsm_wait
-    demo.o(i.gsm_test) refers to gsm.o(i.gsm_msg_read) for gsm_msg_read
-    demo.o(i.hcsr04_test) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
-    demo.o(i.hcsr04_test) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
-    demo.o(i.hcsr04_test) refers to _printf_dec.o(.text) for _printf_int_dec
-    demo.o(i.hcsr04_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.hcsr04_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.hcsr04_test) refers to hcsr04.o(i.hcsr04_init) for hcsr04_init
-    demo.o(i.hcsr04_test) refers to hcsr04.o(i.hcsr04_trigger) for hcsr04_trigger
-    demo.o(i.hcsr04_test) refers to hcsr04.o(i.get_pulse_width) for get_pulse_width
-    demo.o(i.hcsr04_test) refers to aeabi_sdiv.o(.text_udiv) for __aeabi_uidivmod
-    demo.o(i.hcsr04_test) refers to noretval__2sprintf.o(.text) for __2sprintf
-    demo.o(i.hcsr04_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.i2c_eeprom_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.i2c_eeprom_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.i2c_eeprom_test) refers to i2c.o(i.i2c_init) for i2c_init
-    demo.o(i.i2c_eeprom_test) refers to i2c.o(i.i2c_write_buffer) for i2c_write_buffer
-    demo.o(i.i2c_eeprom_test) refers to i2c.o(i.i2c_read_buffer) for i2c_read_buffer
-    demo.o(i.i2c_eeprom_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.i2c_eeprom_test) refers to demo.o(.constdata) for .constdata
-    demo.o(i.i2c_rtc_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.i2c_rtc_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.i2c_rtc_test) refers to i2c.o(i.i2c_init) for i2c_init
-    demo.o(i.i2c_rtc_test) refers to demo.o(i.get_time_date) for get_time_date
-    demo.o(i.i2c_rtc_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.keypad_test) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
-    demo.o(i.keypad_test) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
-    demo.o(i.keypad_test) refers to _printf_dec.o(.text) for _printf_int_dec
-    demo.o(i.keypad_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.keypad_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.keypad_test) refers to keypad.o(i.get_keypad_key) for get_keypad_key
-    demo.o(i.keypad_test) refers to noretval__2sprintf.o(.text) for __2sprintf
-    demo.o(i.keypad_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.lcd_test) refers to lcd.o(i.lcd_init) for lcd_init
-    demo.o(i.lcd_test) refers to lcd.o(i.lcd_clear) for lcd_clear
-    demo.o(i.lcd_test) refers to lcd.o(i.lcd_print_xy) for lcd_print_xy
-    demo.o(i.mcp32_test) refers to _printf_pad.o(.text) for _printf_pre_padding
-    demo.o(i.mcp32_test) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
-    demo.o(i.mcp32_test) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
-    demo.o(i.mcp32_test) refers to _printf_dec.o(.text) for _printf_int_dec
-    demo.o(i.mcp32_test) refers to spi.o(i.spi_init) for spi_init
-    demo.o(i.mcp32_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.mcp32_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.mcp32_test) refers to mcp320x.o(i.read_mcp320x) for read_mcp320x
-    demo.o(i.mcp32_test) refers to noretval__2sprintf.o(.text) for __2sprintf
-    demo.o(i.mcp32_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.mpu_test) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
-    demo.o(i.mpu_test) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
-    demo.o(i.mpu_test) refers to _printf_dec.o(.text) for _printf_int_dec
-    demo.o(i.mpu_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.mpu_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.mpu_test) refers to mpu6050.o(i.mpu6050_init) for mpu6050_init
-    demo.o(i.mpu_test) refers to mpu6050.o(i.mpu6050_read) for mpu6050_read
-    demo.o(i.mpu_test) refers to dflt_noclz.o(x$fpl$dflt) for __aeabi_i2d
-    demo.o(i.mpu_test) refers to ddiv.o(x$fpl$ddiv) for __aeabi_ddiv
-    demo.o(i.mpu_test) refers to daddsub_noclz.o(x$fpl$dadd) for __aeabi_dadd
-    demo.o(i.mpu_test) refers to dfix.o(x$fpl$dfix) for __aeabi_d2iz
-    demo.o(i.mpu_test) refers to noretval__2sprintf.o(.text) for __2sprintf
-    demo.o(i.mpu_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.nrf_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.nrf_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.nrf_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.nrf_test) refers to nrf24.o(i.nrf_init) for nrf_init
-    demo.o(i.oled_test) refers to oled.o(i.oled_init) for oled_init
-    demo.o(i.oled_test) refers to oled.o(i.oled_reset) for oled_reset
-    demo.o(i.oled_test) refers to oled.o(i.oled_fill) for oled_fill
-    demo.o(i.oled_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.oled_test) refers to oled.o(i.oled_clear) for oled_clear
-    demo.o(i.oled_test) refers to oled.o(i.oled_print_xy) for oled_print_xy
-    demo.o(i.rtc_test) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
-    demo.o(i.rtc_test) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
-    demo.o(i.rtc_test) refers to _printf_dec.o(.text) for _printf_int_dec
-    demo.o(i.rtc_test) refers to rtc.o(i.rtc_set_time) for rtc_set_time
-    demo.o(i.rtc_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.rtc_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.rtc_test) refers to rtc.o(i.rtc_init) for rtc_init
-    demo.o(i.rtc_test) refers to rtc.o(i.rtc_get_time) for rtc_get_time
-    demo.o(i.rtc_test) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
-    demo.o(i.rtc_test) refers to noretval__2sprintf.o(.text) for __2sprintf
-    demo.o(i.rtc_test) refers to delay.o(i.delay_ms) for delay_ms
-    demo.o(i.serial_test) refers to serial.o(i.serial0_init) for serial0_init
-    demo.o(i.serial_test) refers to serial.o(i.serial0_print) for serial0_print
-    demo.o(i.serial_test) refers to serial.o(i.serial0_available) for serial0_available
-    demo.o(i.serial_test) refers to serial.o(i.serial0_read) for serial0_read
-    demo.o(i.serial_test) refers to serial.o(i.serial0_write) for serial0_write
+    demo.o(i.gpio_example) refers to gpio.o(i.gpio_pin_mode) for gpio_pin_mode
+    demo.o(i.gpio_example) refers to gpio.o(i.gpio_pin_write) for gpio_pin_write
+    demo.o(i.gpio_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.gsm_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.gsm_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.gsm_example) refers to gsm.o(i.gsm_init) for gsm_init
+    demo.o(i.gsm_example) refers to gsm.o(i.gsm_pname) for gsm_pname
+    demo.o(i.gsm_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.gsm_example) refers to gsm.o(i.gsm_msg_send) for gsm_msg_send
+    demo.o(i.gsm_example) refers to gsm.o(i.gsm_wait) for gsm_wait
+    demo.o(i.gsm_example) refers to gsm.o(i.gsm_msg_read) for gsm_msg_read
+    demo.o(i.hcsr04_example) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    demo.o(i.hcsr04_example) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    demo.o(i.hcsr04_example) refers to _printf_dec.o(.text) for _printf_int_dec
+    demo.o(i.hcsr04_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.hcsr04_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.hcsr04_example) refers to hcsr04.o(i.hcsr04_init) for hcsr04_init
+    demo.o(i.hcsr04_example) refers to hcsr04.o(i.hcsr04_trigger) for hcsr04_trigger
+    demo.o(i.hcsr04_example) refers to hcsr04.o(i.get_pulse_width) for get_pulse_width
+    demo.o(i.hcsr04_example) refers to aeabi_sdiv.o(.text_udiv) for __aeabi_uidivmod
+    demo.o(i.hcsr04_example) refers to noretval__2sprintf.o(.text) for __2sprintf
+    demo.o(i.hcsr04_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.i2c_eeprom_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.i2c_eeprom_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.i2c_eeprom_example) refers to i2c.o(i.i2c_init) for i2c_init
+    demo.o(i.i2c_eeprom_example) refers to i2c.o(i.i2c_write_buffer) for i2c_write_buffer
+    demo.o(i.i2c_eeprom_example) refers to i2c.o(i.i2c_read_buffer) for i2c_read_buffer
+    demo.o(i.i2c_eeprom_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.i2c_eeprom_example) refers to demo.o(.constdata) for .constdata
+    demo.o(i.i2c_rtc_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.i2c_rtc_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.i2c_rtc_example) refers to i2c.o(i.i2c_init) for i2c_init
+    demo.o(i.i2c_rtc_example) refers to demo.o(i.get_time_date) for get_time_date
+    demo.o(i.i2c_rtc_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.keypad_example) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    demo.o(i.keypad_example) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    demo.o(i.keypad_example) refers to _printf_dec.o(.text) for _printf_int_dec
+    demo.o(i.keypad_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.keypad_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.keypad_example) refers to keypad.o(i.get_keypad_key) for get_keypad_key
+    demo.o(i.keypad_example) refers to noretval__2sprintf.o(.text) for __2sprintf
+    demo.o(i.keypad_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.lcd_example) refers to lcd.o(i.lcd_init) for lcd_init
+    demo.o(i.lcd_example) refers to lcd.o(i.lcd_clear) for lcd_clear
+    demo.o(i.lcd_example) refers to lcd.o(i.lcd_print_xy) for lcd_print_xy
+    demo.o(i.mcp32_example) refers to _printf_pad.o(.text) for _printf_pre_padding
+    demo.o(i.mcp32_example) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    demo.o(i.mcp32_example) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    demo.o(i.mcp32_example) refers to _printf_dec.o(.text) for _printf_int_dec
+    demo.o(i.mcp32_example) refers to spi.o(i.spi_init) for spi_init
+    demo.o(i.mcp32_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.mcp32_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.mcp32_example) refers to mcp320x.o(i.read_mcp320x) for read_mcp320x
+    demo.o(i.mcp32_example) refers to noretval__2sprintf.o(.text) for __2sprintf
+    demo.o(i.mcp32_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.mpu_example) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    demo.o(i.mpu_example) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    demo.o(i.mpu_example) refers to _printf_dec.o(.text) for _printf_int_dec
+    demo.o(i.mpu_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.mpu_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.mpu_example) refers to mpu6050.o(i.mpu6050_init) for mpu6050_init
+    demo.o(i.mpu_example) refers to mpu6050.o(i.mpu6050_read) for mpu6050_read
+    demo.o(i.mpu_example) refers to dflt_noclz.o(x$fpl$dflt) for __aeabi_i2d
+    demo.o(i.mpu_example) refers to ddiv.o(x$fpl$ddiv) for __aeabi_ddiv
+    demo.o(i.mpu_example) refers to daddsub_noclz.o(x$fpl$dadd) for __aeabi_dadd
+    demo.o(i.mpu_example) refers to dfix.o(x$fpl$dfix) for __aeabi_d2iz
+    demo.o(i.mpu_example) refers to noretval__2sprintf.o(.text) for __2sprintf
+    demo.o(i.mpu_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.nrf_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.nrf_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.nrf_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.nrf_example) refers to nrf24.o(i.nrf_init) for nrf_init
+    demo.o(i.oled_example) refers to oled.o(i.oled_init) for oled_init
+    demo.o(i.oled_example) refers to oled.o(i.oled_reset) for oled_reset
+    demo.o(i.oled_example) refers to oled.o(i.oled_fill) for oled_fill
+    demo.o(i.oled_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.oled_example) refers to oled.o(i.oled_clear) for oled_clear
+    demo.o(i.oled_example) refers to oled.o(i.oled_print_xy) for oled_print_xy
+    demo.o(i.rtc_example) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    demo.o(i.rtc_example) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    demo.o(i.rtc_example) refers to _printf_dec.o(.text) for _printf_int_dec
+    demo.o(i.rtc_example) refers to rtc.o(i.rtc_set_time) for rtc_set_time
+    demo.o(i.rtc_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.rtc_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.rtc_example) refers to rtc.o(i.rtc_init) for rtc_init
+    demo.o(i.rtc_example) refers to rtc.o(i.rtc_get_time) for rtc_get_time
+    demo.o(i.rtc_example) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
+    demo.o(i.rtc_example) refers to noretval__2sprintf.o(.text) for __2sprintf
+    demo.o(i.rtc_example) refers to delay.o(i.delay_ms) for delay_ms
+    demo.o(i.serial_example) refers to serial.o(i.serial0_init) for serial0_init
+    demo.o(i.serial_example) refers to serial.o(i.serial0_print) for serial0_print
+    demo.o(i.serial_example) refers to serial.o(i.serial0_available) for serial0_available
+    demo.o(i.serial_example) refers to serial.o(i.serial0_read) for serial0_read
+    demo.o(i.serial_example) refers to serial.o(i.serial0_write) for serial0_write
     demo.o(i.set_time_date) refers to i2c.o(i.i2c_write_buffer) for i2c_write_buffer
     gsm.o(i.debug) refers to serial.o(i.serial0_print) for serial0_print
     gsm.o(i.debug) refers to delay.o(i.delay_ms) for delay_ms
@@ -571,23 +571,23 @@ Removing Unused input sections from the image.
     Removing rtc.o(i.rtc_set_time), (84 bytes).
     Removing extint.o(i.EINT_init), (312 bytes).
     Removing demo.o(i.EINT0_Handler), (68 bytes).
-    Removing demo.o(i.adc_test), (200 bytes).
-    Removing demo.o(i.dht11_test), (220 bytes).
-    Removing demo.o(i.external_int_test), (76 bytes).
+    Removing demo.o(i.adc_example), (200 bytes).
+    Removing demo.o(i.dht11_example), (220 bytes).
+    Removing demo.o(i.external_int_example), (76 bytes).
     Removing demo.o(i.get_time_date), (348 bytes).
-    Removing demo.o(i.gpio_test), (60 bytes).
-    Removing demo.o(i.gsm_test), (240 bytes).
-    Removing demo.o(i.hcsr04_test), (144 bytes).
+    Removing demo.o(i.gpio_example), (60 bytes).
+    Removing demo.o(i.gsm_example), (240 bytes).
+    Removing demo.o(i.hcsr04_example), (144 bytes).
     Removing demo.o(i.hex_to_str), (32 bytes).
-    Removing demo.o(i.i2c_eeprom_test), (200 bytes).
-    Removing demo.o(i.i2c_rtc_test), (92 bytes).
-    Removing demo.o(i.keypad_test), (132 bytes).
-    Removing demo.o(i.lcd_test), (116 bytes).
-    Removing demo.o(i.mcp32_test), (128 bytes).
-    Removing demo.o(i.nrf_test), (56 bytes).
-    Removing demo.o(i.oled_test), (96 bytes).
-    Removing demo.o(i.rtc_test), (180 bytes).
-    Removing demo.o(i.serial_test), (60 bytes).
+    Removing demo.o(i.i2c_eeprom_example), (200 bytes).
+    Removing demo.o(i.i2c_rtc_example), (92 bytes).
+    Removing demo.o(i.keypad_example), (132 bytes).
+    Removing demo.o(i.lcd_example), (116 bytes).
+    Removing demo.o(i.mcp32_example), (128 bytes).
+    Removing demo.o(i.nrf_example), (56 bytes).
+    Removing demo.o(i.oled_example), (96 bytes).
+    Removing demo.o(i.rtc_example), (180 bytes).
+    Removing demo.o(i.serial_example), (60 bytes).
     Removing demo.o(i.set_time_date), (36 bytes).
     Removing demo.o(.constdata), (8 bytes).
     Removing gsm.o(i.debug), (44 bytes).
@@ -650,7 +650,7 @@ Adding Veneers to the image
     Adding AT veneer (8 bytes, Inline) for call to '__rt_lib_init' from __rtentry2.o(.ARM.Collect$$rtentry$$0000000A).
     Adding AT veneer (8 bytes, Inline) for call to '__rt_lib_shutdown' from rtexit2.o(.ARM.Collect$$rtexit$$00000003).
     Adding TA veneer (4 bytes, Inline) for call to '__rt_exit' from exit.o(.text).
-    Adding AT veneer (8 bytes, Inline) for call to '__2sprintf' from demo.o(i.mpu_test).
+    Adding AT veneer (8 bytes, Inline) for call to '__2sprintf' from demo.o(i.mpu_example).
     Adding AT veneer (8 bytes, Inline) for call to '_printf_int_dec' from _printf_d.o(.ARM.Collect$$_printf_percent$$00000009).
     Adding TA veneer (4 bytes, Inline) for call to '__rt_udiv10' from _printf_dec.o(.text).
     Adding AT veneer (8 bytes, Inline) for call to '_sys_exit' from rtexit2.o(.ARM.Collect$$rtexit$$00000004).
@@ -879,7 +879,7 @@ Image Symbol Table
     i.main                                   0x00000ed8   Section        0  main.o(i.main)
     i.mpu6050_init                           0x00000eec   Section        0  mpu6050.o(i.mpu6050_init)
     i.mpu6050_read                           0x00000f18   Section        0  mpu6050.o(i.mpu6050_read)
-    i.mpu_test                               0x00000fe4   Section        0  demo.o(i.mpu_test)
+    i.mpu_example                            0x00000fe4   Section        0  demo.o(i.mpu_example)
     i.serial0_buff                           0x000010bc   Section        0  serial.o(i.serial0_buff)
     i.serial0_init                           0x0000119c   Section        0  serial.o(i.serial0_init)
     i.serial0_print                          0x00001268   Section        0  serial.o(i.serial0_print)
@@ -1050,7 +1050,7 @@ Image Symbol Table
     main                                     0x00000ed8   ARM Code      20  main.o(i.main)
     mpu6050_init                             0x00000eec   ARM Code      44  mpu6050.o(i.mpu6050_init)
     mpu6050_read                             0x00000f18   ARM Code     204  mpu6050.o(i.mpu6050_read)
-    mpu_test                                 0x00000fe4   ARM Code     148  demo.o(i.mpu_test)
+    mpu_example                              0x00000fe4   ARM Code     148  demo.o(i.mpu_example)
     serial0_buff                             0x000010bc   ARM Code     208  serial.o(i.serial0_buff)
     serial0_init                             0x0000119c   ARM Code     188  serial.o(i.serial0_init)
     serial0_print                            0x00001268   ARM Code      40  serial.o(i.serial0_print)
@@ -1194,7 +1194,7 @@ Memory Map of the image
     0x00000ed8   0x00000014   Code   RO           66    i.main              main.o
     0x00000eec   0x0000002c   Code   RO          137    i.mpu6050_init      mpu6050.o
     0x00000f18   0x000000cc   Code   RO          138    i.mpu6050_read      mpu6050.o
-    0x00000fe4   0x000000d8   Code   RO           81    i.mpu_test          demo.o
+    0x00000fe4   0x000000d8   Code   RO           81    i.mpu_example       demo.o
     0x000010bc   0x000000e0   Code   RO           33    i.serial0_buff      serial.o
     0x0000119c   0x000000cc   Code   RO           35    i.serial0_init      serial.o
     0x00001268   0x00000028   Code   RO           36    i.serial0_print     serial.o
