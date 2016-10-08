@@ -1,6 +1,7 @@
 #ifndef DEMO_H_
 #define DEMO_H_
 
+void mpu_test(void);
 void nrf_test(void);
 void external_int_test(void);
 void keypad_test(void);

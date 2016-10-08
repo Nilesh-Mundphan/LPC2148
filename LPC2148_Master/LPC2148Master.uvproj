@@ -374,7 +374,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\lib\adc;.\lib\delay;.\lib\gpio;.\lib\irq;.\lib\nstring;.\lib\serial;.\lib\system;.\modules\gsm;.\modules\lcd;.\modules\dht11;.\modules\hcsr04;.\lib\i2c;.\lib\spi;.\modules\mcp320x;.\lib\rtc;.\modules\ssd1306;.\modules\keypad;.\lib\extint;.\modules\nrf24</IncludePath>
+              <IncludePath>.\lib\adc;.\lib\delay;.\lib\gpio;.\lib\irq;.\lib\nstring;.\lib\serial;.\lib\system;.\modules\gsm;.\modules\lcd;.\modules\dht11;.\modules\hcsr04;.\lib\i2c;.\lib\spi;.\modules\mcp320x;.\lib\rtc;.\modules\ssd1306;.\modules\keypad;.\lib\extint;.\modules\nrf24;.\modules\mpu6050</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -537,6 +537,11 @@
               <FileName>nrf24.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\modules\nrf24\nrf24.c</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\modules\mpu6050\mpu6050.c</FilePath>
             </File>
           </Files>
         </Group>

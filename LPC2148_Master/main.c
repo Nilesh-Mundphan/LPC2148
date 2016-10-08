@@ -4,5 +4,5 @@
 
 int main(void)
 {
-	nrf_test();
+	mpu_test();
 }

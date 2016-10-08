@@ -18,6 +18,26 @@
 #include "dht11.h"
 #include "extint.h"
 #include "nrf24.h"
+#include "mpu6050.h"
+
+void mpu_test(void)
+{
+	  int16_t mpu_data[7];
+    int temp=0;
+    char str[64];
+    serial0_init(9600);
+    serial0_print("MPU6050 Test\r\n");
+    mpu6050_init();
+    while(1)
+    {
+        mpu6050_read(mpu_data);
+        temp=(int)(mpu_data[3]/340.00+36.53);
+        sprintf(str,"AcX =%d | AcY =%d | AcZ =%d | Temp =%d ",mpu_data[0],mpu_data[1],mpu_data[2],temp);
+        serial0_print(str);
+        serial0_print("\r\n");
+        delay_ms(1000);
+    }
+}
 
 void nrf_test(void)
 {
@@ -43,12 +63,12 @@ void EINT0_Handler(void) __irq
 void external_int_test(void)
 {
 	serial0_init(9600);
-  serial0_print("EINT Testing ....\r\n");
+	serial0_print("EINT Testing ....\r\n");
 	delay_ms(100);	
 	EINT_init(0,EDGE,FALLING_EDGE,(void *)EINT0_Handler);
 	while(1)
 	{
-		
+
 	}
 }
 
@@ -145,7 +165,7 @@ void mcp32_test(void)
 
 void set_time_date(uint8_t *rtc_str)
 {
-	i2c_write_buffer(0,rtc_str,7);
+	i2c_write_buffer(0xD0,0,rtc_str,7);
 }
 void hex_to_str(uint8_t value,char *str)
 {
@@ -157,7 +177,7 @@ void get_time_date(char *rtc_str)
 {
 	uint8_t rtc_buffer[8];
 	char h_s[2];
-	if (!i2c_read_buffer(0,rtc_buffer,7))		// Read date and time from RTC 
+	if (!i2c_read_buffer(0xD0,0,rtc_buffer,7))		// Read date and time from RTC 
 			serial0_print("\nMemory Read error....");
   	
 	
@@ -210,12 +230,12 @@ void i2c_eeprom_test(void)
 	serial0_init(9600);
 	serial0_print("I2C Testing\r\n");
 	i2c_init();
-	i2c_write_buffer(0,write_buffer,6);
+	i2c_write_buffer(0xA0,0,write_buffer,6);
 	serial0_print("Write Done\r\n");
 
 	while(1)
 	{
-		if (!i2c_read_buffer(0,read_buffer,6))		// Read date and time from RTC 
+		if (!i2c_read_buffer(0xA0,0,read_buffer,6))		// Read date and time from RTC 
 			serial0_print("\nMemory Read error....");
 
 		serial0_print((char *)read_buffer);	
